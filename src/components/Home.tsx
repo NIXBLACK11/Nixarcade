@@ -1,5 +1,3 @@
-import React from "react"
-
 export const Home = () => {
     return (
         <div className="pt-16 pb-12 bg-custom-dark m-0 p-0 bg-no-repeat bg-center bg-cover" style={{ backgroundImage: `url('/back.jpg')` }}>
