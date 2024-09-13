@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Games = () => {
     return (
         <div className="py-12 bg-custom-dark m-0 p-0">
