@@ -33,7 +33,7 @@ export const Navbar = () => {
                             <span className="text-2xl font-bold text-custom-primary">
                                 Powered by
                                 <img
-                                    src="public/Size=96, Color=color-white.svg"
+                                    src="Size=96, Color=color-white.svg"
                                     style={{width: "150px"}}
                                 />
                             </span>

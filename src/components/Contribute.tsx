@@ -7,8 +7,7 @@ export const Contribute = () => {
                     Raise an issue
                     <a href="https://github.com/NIXBLACK11/GamesPage" target="_blank" rel="noopener noreferrer">
                         <img
-                            src="/github.png"
-
+                            src="github.png"
                             alt="GitHub"
                             className="my-2"
                             style={{ width: "50px" }}

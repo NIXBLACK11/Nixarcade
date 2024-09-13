@@ -13,7 +13,7 @@ export const Games = () => {
                 <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                     <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark hover-tilt">
                         <a href="#">
-                            <img className="p-8 rounded-t-lg" src="public/Ludo.png" alt="product image" />
+                            <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
                         </a>
                         <div className="px-5 pb-5">
                             <a href="https://www.ludo.com/">
