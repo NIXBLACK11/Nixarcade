@@ -1,3 +1,5 @@
+import TiltWrapper from "./TiltWrapper";
+
 export const Games = () => {
     return (
         <div className="py-12 bg-custom-dark m-0 p-0">
@@ -11,36 +13,78 @@ export const Games = () => {
 
             <div className="mt-10">
                 <div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
-                    <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark hover-tilt">
-                        <a href="#">
-                            <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
-                        </a>
-                        <div className="px-5 pb-5">
-                            <a href="https://www.ludo.com/">
-                                <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                    <TiltWrapper options={{ max: 15, speed: 200 }}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <a href="#">
+                                <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
                             </a>
+                            <div className="px-5 pb-5">
+                                <a href="https://www.ludo.com/">
+                                    <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark hover-tilt">
-                        <a href="#">
-                            <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
-                        </a>
-                        <div className="px-5 pb-5">
-                            <a href="https://www.ludo.com/">
-                                <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Tic Tac Toe, play and win with your friends!!</h5>
+                    </TiltWrapper>
+                    <TiltWrapper options={{ max: 15, speed: 200 }}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <a href="#">
+                                <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
                             </a>
+                            <div className="px-5 pb-5">
+                                <a href="https://www.ludo.com/">
+                                    <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Tic Tac Toe, play and win with your friends!!</h5>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark hover-tilt">
-                        <a href="#">
-                            <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
-                        </a>
-                        <div className="px-5 pb-5">
-                            <a href="https://www.ludo.com/">
-                                <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                    </TiltWrapper>
+                    <TiltWrapper options={{ max: 15, speed: 200 }}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <a href="#">
+                                <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
                             </a>
+                            <div className="px-5 pb-5">
+                                <a href="https://www.ludo.com/">
+                                    <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    </TiltWrapper>
+                    <TiltWrapper options={{ max: 15, speed: 200 }}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <a href="#">
+                                <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
+                            </a>
+                            <div className="px-5 pb-5">
+                                <a href="https://www.ludo.com/">
+                                    <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </TiltWrapper>
+                    <TiltWrapper options={{ max: 15, speed: 200 }}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <a href="#">
+                                <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
+                            </a>
+                            <div className="px-5 pb-5">
+                                <a href="https://www.ludo.com/">
+                                    <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Tic Tac Toe, play and win with your friends!!</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </TiltWrapper>
+                    <TiltWrapper options={{ max: 15, speed: 200 }}>
+                        <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <a href="#">
+                                <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
+                            </a>
+                            <div className="px-5 pb-5">
+                                <a href="https://www.ludo.com/">
+                                    <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </TiltWrapper>
                 </div>
             </div>
             </div>
