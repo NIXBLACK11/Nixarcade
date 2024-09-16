@@ -1,9 +1,10 @@
-import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
+// import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { Connection } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 
 const NETWORK = "https://api.devnet.solana.com";
-const GAME_WALLET_PUBLIC_KEY = "6264vVvtWg8CqBRegBt83ttcPPK61LurXNs7cqF56Gf5";
-const DEPOSIT_AMOUNT = 0.1;
+// const GAME_WALLET_PUBLIC_KEY = "6264vVvtWg8CqBRegBt83ttcPPK61LurXNs7cqF56Gf5";
+// const DEPOSIT_AMOUNT = 0.1;
 
 interface WalletConnectProps {
     setViewNFT: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,7 +12,7 @@ interface WalletConnectProps {
 
 export const WalletConnect: React.FC<WalletConnectProps> = ({setViewNFT}) => {
     const [walletAddress, setWalletAddress] = useState<string | null>(null);
-    const [connection, setConnection] = useState<Connection | null>(null);
+    const [_connection, setConnection] = useState<Connection | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
