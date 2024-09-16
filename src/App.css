@@ -1,6 +1,7 @@
 :root {
   --color-primary: #14F195;
-  --color-dark: #121212;
+  /* --color-dark: #121212; */
+  --color-dark: #000000;
   --color-gray: #6B7280;
   --color-white: #FFFFFF;
 }
@@ -29,11 +30,3 @@
 body {
   overflow-x: hidden;
 }
-
-
-/* first secondary
-30F9CE
-second 
-32A4FF
-main
-8B30E8 */
