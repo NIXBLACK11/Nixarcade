@@ -5,9 +5,9 @@ export const Navbar = () => {
                 <div className="flex justify-between h-16">
                     <div className="flex">
                         <div className="flex-shrink-0 flex items-center">
-                            <span className="text-2xl font-bold text-custom-primary">
+                            <span className="text-2xl font-bold text-custom-primary mt-4">
                                 <img
-                                    src="logotext.png"
+                                    src="textLogo.png"
                                     width="100px"
                                 />
                             </span>
@@ -34,7 +34,7 @@ export const Navbar = () => {
                         </div>
                     </div>
                     <div className="flex items-center">
-                        <span className="text-2xl font-bold text-custom-primary">
+                        <span className="text-2xl font-bold text-custom-primary ">
                             Powered by
                             <img
                                 src="Size=96, Color=color-white.svg"
