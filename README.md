@@ -1,50 +1,23 @@
-# React + TypeScript + Vite
+# NixArcade
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **NixArcade**, the ultimate online platform where you can play your favorite board games with friends and family, anytime and anywhere! Simply connect your favorite wallet, contribute some SOL , and enjoy playing classic games like Ludo.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Connect Wallet**: Securely connect your Solana wallet to participate.
+- **Contribute SOL**: Add SOL to start playing or challenge others.
+- **Private Game Rooms**: Create or join private game rooms with a unique code to play with friends and family.
+- **Classic Games**: Enjoy games like Ludo, with more to come!
 
-## Expanding the ESLint configuration
+## Available Games
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. [Tic-Tac-Toe](https://github.com/NIXBLACK11/tic-tac-toe)  
+2. [Ludo](https://github.com/NIXBLACK11/Ludo)
 
-- Configure the top-level `parserOptions` property like this:
+## How to Play
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. **Join or Create a Game Room**: Use or share a private game code with others to play.
+2. **Connect your Wallet**: Log in by connecting your preferred Solana wallet.
+3. **Contribute SOL**: Add a small contribution in SOL to join the game.
+4. **Start Playing**: Have fun with friends and family playing your favorite board games!
+5. **Winners**: The winner gets the money.
