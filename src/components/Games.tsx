@@ -24,7 +24,7 @@ export const Games = () => {
                         </a>
                     </TiltWrapper>
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
-                        <a target="blank" href="https://nixarcade.fun/ComingSoon">
+                        <a target="blank" href="/ComingSoon">
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
                                 <div className="px-5 pb-5">
@@ -34,11 +34,11 @@ export const Games = () => {
                         </a>
                     </TiltWrapper>
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
-                        <a target="blank" href="https://ludo.nixarcade.fun/">
+                        <a target="blank" href="/ComingSoon">
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
-                                    <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
+                                    <img className="p-8 rounded-t-lg" src="chess.png" alt="product image" />
                                 <div className="px-5 pb-5">
-                                        <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                        <h5 className="text-xl font-semibold tracking-tight text-custom-dark">Chess, play and win with your friends!!</h5>
                                 </div>
                             </div>
                         </a>
