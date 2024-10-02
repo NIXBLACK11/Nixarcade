@@ -13,7 +13,7 @@ export const Home: React.FC = () => {
     };
 
     return (
-        <div className="h-screen relative pt-16 pb-12 bg-custom-dark h-screen overflow-hidden" style={{ backgroundImage: "url('bg3.jpg')", backgroundSize: "100% 100%" }}>
+        <div className="h-screen relative pt-16 pb-12 bg-custom-dark overflow-hidden" style={{ backgroundImage: "url('bg3.jpg')", backgroundSize: "100% 100%" }}>
             {/* <style>{`
                 @keyframes slideBackground {
                     from { transform: translateX(0); }
