@@ -10,27 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@react-native-google-signin/google-signin": "^13.1.0",
-    "@react-navigation/native": "^6.1.18",
+    "@react-oauth/google": "^0.12.1",
     "@solana/web3.js": "^1.95.3",
-    "buffer": "^6.0.3",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "express-openid-connect": "^2.17.1",
-    "lucide-react": "^0.441.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-native-dropdown-picker": "^5.4.6",
-    "react-native-safe-area-context": "^4.11.0",
-    "react-native-screens": "^3.34.0",
-=======
-    "@solana/web3.js": "^1.95.3",
+    "axios": "^1.7.7",
     "buffer": "^6.0.3",
     "lucide-react": "^0.441.0",
+    "okto-sdk-react": "^0.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
->>>>>>> ed2a81fbf23884c6c66cb0313047d3f44d65e677
     "react-router-dom": "^6.26.2",
     "react-scroll": "^1.9.0",
     "vanilla-tilt": "^1.8.1"
