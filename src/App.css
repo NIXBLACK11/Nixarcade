@@ -1,0 +1,32 @@
+:root {
+  --color-primary: #ca4385;
+  /* --color-dark: #121212; */
+  --color-dark: #000000;
+  --color-gray: #6B7280;
+  --color-white: #FFFFFF;
+}
+
+.text-custom-gray { color: var(--color-gray); }
+.text-custom-primary { color: var(--color-primary); }
+.text-custom-dark { color: var(--color-white); }
+.bg-custom-dark { background-color: var(--color-dark); }
+.bg-custom-primary { background-color: var(--color-primary); }
+.text-custom-white { color: var(--color-white); }
+
+.hover-tilt {
+  transition: transform 0.3s ease;
+}
+
+.hover-tilt:hover {
+  transform: rotate3d(1, -1, 0, 20deg); /* Rotates along X and Y axes */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
