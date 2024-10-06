@@ -1,8 +1,12 @@
+import OktoNavbar from "../components/OktoNavbar";
 import TiltWrapper from "../components/TiltWrapper";
 
 export const Games = () => {
     return (
         <div className="py-12 bg-custom-dark m-0 p-0 h-screen w-screen">
+            <div>
+                <OktoNavbar/>
+            </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="lg:text-center">
                 <h2 className="text-base text-custom-primary font-semibold tracking-wide uppercase">Games</h2>
