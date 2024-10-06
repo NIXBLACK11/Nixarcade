@@ -1,3 +1,5 @@
+import { Login } from "./Login"
+
 export const Navbar = () => {
     return (
         <nav className="bg-transparent fixed top-0 left-0 w-full z-10 m-0 p-0">
@@ -33,14 +35,8 @@ export const Navbar = () => {
                             </a>
                         </div>
                     </div>
-                    <div className="flex items-center">
-                        <span className="text-2xl font-bold text-custom-primary ">
-                            Powered by
-                            <img
-                                src="Size=96, Color=color-white.svg"
-                                style={{width: "150px"}}
-                            />
-                        </span>
+                    <div className="mt-4">
+                        <Login/>
                     </div>
                 </div>
             </div>

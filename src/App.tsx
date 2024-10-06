@@ -5,22 +5,18 @@ import './App.css'
 import { ComingSoon } from './components/ComingSoon';
 import { Games } from './pages/Games';
 import Landing from './pages/Landing';
-import { Login } from './components/Login';
-import { Home } from './components/Home';
 
 
 function App() {
-  const OKTO_CLIENT_API = "************************88";
+  const REACT_APP_OKTO_CLIENT_API = process.env.REACT_APP_OKTO_CLIENT_API || "";
   return (
     <div className='h-screen w-screen '>
       <Router>
-        <OktoProvider apiKey={OKTO_CLIENT_API} buildType={BuildType.SANDBOX}>
+        <OktoProvider apiKey={REACT_APP_OKTO_CLIENT_API} buildType={BuildType.SANDBOX}>
           <Routes>
             <Route path="/" element={ <Landing/> } />
             <Route path="/ComingSoon" element={ <ComingSoon/> } />
             <Route path="/games" element={ <Games/> } />
-            <Route path="/login" element={ <Login/> } />
-            <Route path="/ffffff" element={ <Home/> } />
           </Routes>
         </OktoProvider>
       </Router>

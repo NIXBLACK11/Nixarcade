@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useOkto, Wallet, WalletData } from "okto-sdk-react";
+ 
+
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from 'recoil';
+import { authState } from '../atom';
 
 const OktoNavbar = () => {
   const okto = useOkto();
@@ -8,14 +12,14 @@ const OktoNavbar = () => {
   const [wallets, setWallets] = useState<WalletData>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-
+  const [authToken] = useRecoilState(authState);
+  
   useEffect(() => {
     checkAuthentication();
   }, []);
 
   const checkAuthentication = async () => {
-    const token = localStorage.getItem('oktoAuthToken');
-    if (!token) {
+    if (!authToken) {
       setError("No auth token found. Please log in again.");
       navigate("/");
       return;
@@ -27,47 +31,24 @@ const OktoNavbar = () => {
     } catch (err) {
       console.error("Authentication error:", err);
       setError("Authentication failed. Please log in again.");
-      localStorage.removeItem('oktoAuthToken');
       navigate("/");
     }
   };
 
   const handleCreateWallet = async () => {
-    if (!okto) {
-      setError("Okto context is not available");
-      return;
-    }
-
     try {
-      setLoading(true);
-      setError("");
-      const result = await okto.createWallet();
-      console.log("Wallet creation result:", result);
-      setWallets(result);
-    } catch (err: any) {
-      console.error("Wallet creation error:", err);
-      if (err.response) {
-        console.error("Error response:", err.response.data);
-        setError(`Failed to create wallet: ${err.response.data.message || err.message}`);
-      } else if (err.request) {
-        setError("No response received from server. Please try again.");
-      } else {
-        setError(`Error: ${err.message}`);
+        const walletsData = await okto?.createWallet();
+        console.log(walletsData)
+        setWallets(walletsData);
+      } catch (error: any) {
+        setError(`Failed to fetch wallets: ${error.message}`);
       }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('oktoAuthToken');
-    navigate("/");
   };
 
   return (
-    <nav className="bg-white shadow-md p-4">
+    <nav className="bg-transparent shadow-md p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">Okto Wallet</h1>
+        {/* <h1 className="text-xl font-bold">Okto Wallet</h1> */}
         <div>
           {wallets && wallets.wallets.length > 0 ? (
             <div className="flex space-x-4">
