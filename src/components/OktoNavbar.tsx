@@ -102,6 +102,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
         <div></div>
         {wallets && wallets.wallets.length > 0 ? (<div className='ml-auto'>
           <button
+            className='mr-5'
             onClick={()=>{
               setOpen(!isOpen);
               fetchBalance();
@@ -109,7 +110,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
           >
             <img
               src='okto.png'
-              className='h-10 rounded-full'
+              className='h-16 rounded-full'
             />
           </button>
           {isOpen && <div className="absolute right-5 mt-2 w-1/5 bg-transparent shadow-lg rounded-lg flex flex-col justify-center items-start border z-10">

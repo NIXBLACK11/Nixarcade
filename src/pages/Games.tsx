@@ -61,7 +61,6 @@ export const Games = () => {
                         <div
                             onClick={async ()=>{
                                 const success = await makeTransaction();
-                                console.log(success);
                                 if(success) {
                                     saveToken();
                                 }
