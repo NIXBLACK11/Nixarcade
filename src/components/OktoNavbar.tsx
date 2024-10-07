@@ -6,7 +6,7 @@ import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
 
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from 'recoil';
-import { authState, transState } from '../atom';
+import { transState } from '../atom';
 import { Wallet } from './Wallet';
 
 interface OktoNavbarProps {
@@ -19,12 +19,11 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const navigate = useNavigate();
   const [trans, setTrans] = useRecoilState(transState);
   const [isOpen, setOpen] = useState(false);
-  // const [wallets, setWallets] = useState<WalletData>();
   const [connection, setConnection] = useState<Connection | null>(null);
   const [balance, setBalance] = useState<number | null>(null);
   const [_error, setError] = useState<string>("");
-  const [authToken] = useRecoilState(authState);
   const NETWORK = 'https://api.devnet.solana.com';
+  const authToken = localStorage.getItem('googleToken');
   
   useEffect(() => {
     const conn = new Connection(NETWORK);
@@ -139,7 +138,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
             <div
               className="block px-4 py-2 text-gray-400 hover:bg-gray-500 w-full rounded-lg text-sm hover:text-black"
               onClick={()=> {
-                setTrans(true);
+                setTrans(!trans);
               }}
             >
               Transfer funds to wallet

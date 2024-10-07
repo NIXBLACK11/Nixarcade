@@ -15,28 +15,28 @@ export const Games = () => {
     }
 
     const makeTransaction = async () => {
-        if (!okto) {
-            console.error("Okto context is not available");
-            return;
-        }
+        // if (!okto) {
+        //     console.error("Okto context is not available");
+        //     return;
+        // }
 
-        const recipientPublicKey = "FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT";
-        const transferData: TransferTokens = {
-            network_name: "SOLANA_DEVNET",
-            token_address: "",
-            recipient_address: recipientPublicKey,
-            quantity: "1",
-        };
+        // const recipientPublicKey = "FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT";
+        // const transferData: TransferTokens = {
+        //     network_name: "SOLANA_DEVNET",
+        //     token_address: "",
+        //     recipient_address: recipientPublicKey,
+        //     quantity: "1",
+        // };
 
-        try {
-            const result: TransferTokensData = await okto.transferTokens(transferData);
-            console.log(`Transfer of 0.1 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
-            return true;
-        } catch (error) {
-            console.error("Error transferring SOL on devnet:", error);
-            return false;
-        }
-        // return true;
+        // try {
+        //     const result: TransferTokensData = await okto.transferTokens(transferData);
+        //     console.log(`Transfer of 0.1 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
+        //     return true;
+        // } catch (error) {
+        //     console.error("Error transferring SOL on devnet:", error);
+        //     return false;
+        // }
+        return true;
     }
 
     return (

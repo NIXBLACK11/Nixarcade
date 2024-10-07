@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useOkto } from "okto-sdk-react";
 import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
-import { useRecoilState } from "recoil";
-import { authState } from "../atom";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
   const okto = useOkto();
   const [_error, setError] = useState<string | null>(null);
   const [loading, _setLoading] = useState(false);
-  const [_authToken, setAuthToken] = useRecoilState(authState);
 
   const handleGoogleLogin = async (credentialResponse: CredentialResponse) => {
     const idToken = credentialResponse.credential;
@@ -20,8 +17,7 @@ export const Login: React.FC = () => {
     }
      okto?.authenticate(idToken, async (authResponse, error) => {
          if (authResponse) {
-           setAuthToken(authResponse.auth_token);
-
+           localStorage.setItem('googleToken', authResponse.auth_token);
            console.log("Authenticated successfully, auth token:", authResponse.auth_token);
            navigate("/games");
          } else if (error) {
