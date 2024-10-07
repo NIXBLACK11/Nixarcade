@@ -8,11 +8,14 @@ import Landing from './pages/Landing';
 
 
 function App() {
-  const REACT_APP_OKTO_CLIENT_API = process.env.REACT_APP_OKTO_CLIENT_API || "c57be482-b904-4e28-9deb-6c62a092016d";
+  console.log(process.env);
+
+  // const REACT_APP_OKTO_CLIENT_API = process.env.REACT_APP_OKTO_CLIENT_API || "";
+  const apiKey = import.meta.env.VITE_OKTO_CLIENT_API;
   return (
     <div className='h-screen w-screen '>
       <Router>
-        <OktoProvider apiKey={REACT_APP_OKTO_CLIENT_API} buildType={BuildType.SANDBOX}>
+        <OktoProvider apiKey={apiKey} buildType={BuildType.SANDBOX}>
           <Routes>
             <Route path="/" element={ <Landing/> } />
             <Route path="/ComingSoon" element={ <ComingSoon/> } />
