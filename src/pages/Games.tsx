@@ -5,8 +5,10 @@ import { WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
+import { useNavigate } from "react-router-dom";
 
 export const Games = () => {
+    const navigate = useNavigate();
     const [wallets, setWallets] = useState<WalletData>();
     // const okto = useOkto();
     const saveToken = async () => {
@@ -63,6 +65,7 @@ export const Games = () => {
                                 const success = await makeTransaction();
                                 if(success) {
                                     saveToken();
+                                    navigate("https://ludofam.nixarcade.fun");
                                 }
                             }}
                         >
