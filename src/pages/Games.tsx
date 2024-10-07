@@ -1,44 +1,42 @@
 import { useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
-// import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
-import { WalletData } from "okto-sdk-react";
+import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
+// import { WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
 
 export const Games = () => {
     const [wallets, setWallets] = useState<WalletData>();
-    // const okto = useOkto();
+    const okto = useOkto();
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
         saveJWT(token);
     }
 
     const makeTransaction = async () => {
-        // if (!okto) {
-        //     console.error("Okto context is not available");
-        //     return;
-        // }
+        if (!okto) {
+            console.error("Okto context is not available");
+            return;
+        }
 
-        // const recipientPublicKey = "FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT";
-        // const network = "SOLANA_DEVNET"
-        // console.log(network);
-        // const transferData: TransferTokens = {
-        //     network_name: network,
-        //     token_address: "",
-        //     quantity: "0.1",
-        //     recipient_address: recipientPublicKey
-        // };
+        const recipientPublicKey = "FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT";
+        const transferData: TransferTokens = {
+            network_name: "SOLANA_DEVNET",
+            token_address: "",
+            recipient_address: recipientPublicKey,
+            quantity: "1",
+        };
 
-        // try {
-        //     const result: TransferTokensData = await okto.transferTokens(transferData);
-        //     console.log(`Transfer of 0.1 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
-        //     return true;
-        // } catch (error) {
-        //     console.error("Error transferring SOL on devnet:", error);
-        //     return false;
-        // }
-        return true;
+        try {
+            const result: TransferTokensData = await okto.transferTokens(transferData);
+            console.log(`Transfer of 0.1 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
+            return true;
+        } catch (error) {
+            console.error("Error transferring SOL on devnet:", error);
+            return false;
+        }
+        // return true;
     }
 
     return (

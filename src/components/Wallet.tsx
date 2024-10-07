@@ -7,8 +7,9 @@ type WalletProps = {
   };
 
 const walletOptions = [
-    { name: 'Solflare', icon: <img src="/solflare.png" alt="Solflare" className="w-6 h-6" /> },
+    { name: 'Solflare', icon: <img src="solflare.png" alt="Solflare" className="w-6 h-6" /> },
     { name: 'Phantom', icon: <img src="phantom.png" alt="Phantom" className="w-6 h-6" /> },
+    { name: 'UPI(Coming Soon)', icon: <img src="upi.png" alt="Phantom" className="w-6 h-6" /> }
 ];
 export const Wallet: React.FC<WalletProps> = ({address}) => {
     const [wallet, setWallet] = useState<string | null>(null);
