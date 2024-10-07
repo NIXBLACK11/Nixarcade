@@ -1,14 +1,14 @@
 import { useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
-import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
-// import { WalletData } from "okto-sdk-react";
+// import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
+import { WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
 
 export const Games = () => {
     const [wallets, setWallets] = useState<WalletData>();
-    const okto = useOkto();
+    // const okto = useOkto();
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
         saveJWT(token);
