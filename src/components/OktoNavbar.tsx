@@ -1,22 +1,65 @@
 import { useState, useEffect } from 'react';
-import { useOkto, Wallet, WalletData } from "okto-sdk-react";
+import { MdContentCopy } from "react-icons/md";
+import { useOkto, WalletData } from "okto-sdk-react";
+import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
  
 
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from 'recoil';
-import { authState } from '../atom';
+import { authState, transState } from '../atom';
+import { Wallet } from './Wallet';
 
-const OktoNavbar = () => {
+interface OktoNavbarProps {
+  wallets: WalletData | undefined; // WalletData can be undefined initially
+  setWallets: React.Dispatch<React.SetStateAction<WalletData | undefined>>; // setWallets type
+}
+
+const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const okto = useOkto();
   const navigate = useNavigate();
-  const [wallets, setWallets] = useState<WalletData>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [trans, setTrans] = useRecoilState(transState);
+  const [isOpen, setOpen] = useState(false);
+  // const [wallets, setWallets] = useState<WalletData>();
+  const [connection, setConnection] = useState<Connection | null>(null);
+  const [balance, setBalance] = useState<number | null>(null);
+  const [_error, setError] = useState<string>("");
   const [authToken] = useRecoilState(authState);
+  const NETWORK = 'https://api.devnet.solana.com';
   
   useEffect(() => {
+    const conn = new Connection(NETWORK);
+    setConnection(conn);
+}, []);
+
+  useEffect(() => {
     checkAuthentication();
-  }, []);
+    fetchWallets();
+  }, [trans]);
+
+  const fetchBalance = async () => {
+    const walletAddress = wallets?.wallets[0].address;
+    if (!connection || !walletAddress) return;
+
+    try {
+        const publicKey = new PublicKey(walletAddress);
+        const balanceInLamports = await connection.getBalance(publicKey);
+        const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
+        setBalance(balanceInSOL);
+    } catch (error) {
+        console.error("Error fetching balance:", error);
+        setError("Failed to fetch balance. Please try again.");
+    }
+  }
+
+  const fetchWallets = async () => {
+    try {
+      const walletsData = await okto?.createWallet();
+      console.log(walletsData)
+      setWallets(walletsData);
+    } catch (error: any) {
+      setError(`Failed to fetch wallets: ${error.message}`);
+    }
+  };
 
   const checkAuthentication = async () => {
     if (!authToken) {
@@ -28,6 +71,7 @@ const OktoNavbar = () => {
     try {
       const userDetails = await okto?.getUserDetails();
       console.log("User authenticated:", userDetails);
+      fetchBalance();
     } catch (err) {
       console.error("Authentication error:", err);
       setError("Authentication failed. Please log in again.");
@@ -36,9 +80,15 @@ const OktoNavbar = () => {
   };
 
   const handleCreateWallet = async () => {
+    if (!authToken) {
+      setError("No auth token found. Please log in again.");
+      navigate("/");
+      return;
+    }
+
     try {
+        console.log(okto?.isLoggedIn);
         const walletsData = await okto?.createWallet();
-        console.log(walletsData)
         setWallets(walletsData);
       } catch (error: any) {
         setError(`Failed to fetch wallets: ${error.message}`);
@@ -46,30 +96,65 @@ const OktoNavbar = () => {
   };
 
   return (
-    <nav className="bg-transparent shadow-md p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* <h1 className="text-xl font-bold">Okto Wallet</h1> */}
-        <div>
-          {wallets && wallets.wallets.length > 0 ? (
-            <div className="flex space-x-4">
-              {wallets.wallets.map((wallet, index) => (
-                <div key={index} className="bg-gray-100 rounded-md p-2">
-                  <p className="font-semibold">{wallet.network_name}</p>
-                  <p className="text-sm text-gray-600">{wallet.address.slice(0, 6)}...{wallet.address.slice(-4)}</p>
-                </div>
-              ))}
+    <div className="">
+   {trans && <Wallet address={wallets?.wallets[0].address || ""}/>}
+    <nav className="bg-transparent shadow-md p-4 flex justify-between">
+        <div></div>
+        {wallets && wallets.wallets.length > 0 ? (<div className='ml-auto'>
+          <button
+            onClick={()=>{
+              setOpen(!isOpen);
+              fetchBalance();
+            }}
+          >
+            <img
+              src='okto.png'
+              className='h-10 rounded-full'
+            />
+          </button>
+          {isOpen && <div className="absolute right-5 mt-2 w-1/5 bg-transparent shadow-lg rounded-lg flex flex-col justify-center items-start border z-10">
+            <div className='m-0 p-0 flex flex-row'>
+              <p className="font-semibold mx-6 text-white">{wallets.wallets[0].network_name}</p>
+              <p className='text-blue-600 font-semibold mx-6'>SOL: {balance}</p>
             </div>
-          ) : (
+            <div
+              className="block px-4 py-2 text-gray-400 hover:bg-gray-500 w-full rounded-lg hover:text-black"
+            >
+              {wallets.wallets.map((wallet, index) => (
+              <div key={index} className="flex items-center justify-between">
+              <p className="text-sm">
+                {wallet.address.slice(0, 6)}...{wallet.address.slice(-4)}
+              </p>
+              <button
+                onClick={() => navigator.clipboard.writeText(wallet.address)}
+                className="ml-2 text-blue-500 text-sm flex items-center"
+              >
+                <MdContentCopy />
+              </button>
+            </div>
+            
+            ))}
+            </div>
+            <div
+              className="block px-4 py-2 text-gray-400 hover:bg-gray-500 w-full rounded-lg text-sm hover:text-black"
+              onClick={()=> {
+                setTrans(true);
+              }}
+            >
+              Transfer funds to wallet
+            </div>
+          </div>
+          }
+        </div>) : (
             <button
               onClick={handleCreateWallet}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              className="bg-custom-primary hover:bg-[#703250] text-white font-bold py-2 px-4 rounded"
             >
               Create Wallet
             </button>
           )}
-        </div>
-      </div>
     </nav>
+    </div>
   );
 };
 

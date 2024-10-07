@@ -8,7 +8,7 @@ import Landing from './pages/Landing';
 
 
 function App() {
-  const REACT_APP_OKTO_CLIENT_API = process.env.REACT_APP_OKTO_CLIENT_API || "";
+  const REACT_APP_OKTO_CLIENT_API = process.env.REACT_APP_OKTO_CLIENT_API || "c57be482-b904-4e28-9deb-6c62a092016d";
   return (
     <div className='h-screen w-screen '>
       <Router>

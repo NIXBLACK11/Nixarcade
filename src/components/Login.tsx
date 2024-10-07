@@ -1,17 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useOkto } from "okto-sdk-react";
 import { GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import { useRecoilState } from "recoil";
 import { authState } from "../atom";
-import axios from "axios";
 
 export const Login: React.FC = () => {
   const navigate = useNavigate();
   const okto = useOkto();
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [authToken, setAuthToken] = useRecoilState(authState);
+  const [_error, setError] = useState<string | null>(null);
+  const [loading, _setLoading] = useState(false);
+  const [_authToken, setAuthToken] = useRecoilState(authState);
 
   const handleGoogleLogin = async (credentialResponse: CredentialResponse) => {
     const idToken = credentialResponse.credential;

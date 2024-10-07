@@ -3,13 +3,22 @@ import { useEffect, useState } from 'react';
 import { moneyState, transState } from '../atom';
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRecoilState } from 'recoil';
+import Solflare from '@solflare-wallet/sdk';
+
+const wallet = new Solflare();
+const NETWORK = 'https://api.devnet.solana.com';
+const DEPOSIT_AMOUNT = 0.5;
 type WalletProps = {
     address: string;
   };
-const NETWORK = 'https://api.devnet.solana.com';
-const DEPOSIT_AMOUNT = 0.5;
+wallet.on('connect', () => {
+    console.log('connected', wallet.publicKey?.toString());
+});
+wallet.on('disconnect', () => {
+    console.log('disconnected');
+});
 
-export const WalletConnect: React.FC<WalletProps> = ({address}) => {
+export const WalletConnect2: React.FC<WalletProps> = ({address}) => {
     const [_trans, setTrans] = useRecoilState(transState);
     const [walletAddress, setWalletAddress] = useState<string>("");
     const [moneyDeposited, setMoneyDeposited] = useRecoilState(moneyState);
@@ -17,6 +26,7 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const [balance, setBalance] = useState<number>();
+
 
     useEffect(() => {
         const conn = new Connection(NETWORK);
@@ -46,17 +56,14 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
     const connectWallet = async () => {
         setLoading(true);
         setError(null);
-        if (window.solana && window.solana.isPhantom) {
-            try {
-                await window.solana.disconnect(); // Disconnect first to ensure a fresh connection
-                const response = await window.solana.connect();
-                setWalletAddress(response.publicKey.toString());
-            } catch (error) {
-                console.error("Error connecting to Phantom Wallet:", error);
-                setError("Failed to connect to Phantom wallet. Please try again.");
-            }
-        } else {
-            setError("Phantom wallet is not installed!");
+        try {
+            await wallet.disconnect(); // Disconnect first to ensure a fresh connection
+            await wallet.connect();
+            console.log(wallet.publicKey);
+            setWalletAddress(wallet.publicKey?.toString() || "");
+        } catch (error) {
+            console.error("Error connecting to Solflare Wallet:", error);
+            setError("Failed to connect to Solflare wallet. Please try again.");
         }
         setLoading(false);
     };
@@ -114,9 +121,9 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
             const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash();
             transaction.recentBlockhash = blockhash;
             transaction.feePayer = new PublicKey(walletAddress);  // Set the fee payer
-    
-            // Ensure that Phantom is connected and can sign the transaction
-            const signedTransaction = await window.solana?.signTransaction(transaction);
+
+            // Ensure that solflare is connected and can sign the transaction
+            const signedTransaction = await wallet.signTransaction(transaction);
     
             if (!signedTransaction) {
                 throw new Error("Failed to sign the transaction");
@@ -145,7 +152,7 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
     function renderButtonOrInfo() {
         if(loading) {
             return (
-                <div className="flex items-center gap-2 bg-[#9382DE] hover:bg-[#473e6e] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3] disabled:cursor-not-allowed">
+                <div className="flex items-center gap-2 bg-[#14161F] hover:bg-[#313858] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3] disabled:cursor-not-allowed">
                     Loading... almost there!
                     <div className="spinner"></div>
                 </div>
@@ -153,7 +160,7 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
         } else if(moneyDeposited) {
             return (
                 <div 
-                    className="flex items-center gap-2 bg-[#9382DE] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3]"
+                    className="flex items-center gap-2 bg-[#14161F] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3]"
                 >
                     Money deposited successfully
                     <button onClick={() => {
@@ -166,24 +173,24 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
         } else if (!walletAddress) {
           return (
             <button
-              className="flex items-center gap-2 bg-[#9382DE] hover:bg-[#473e6e] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3] disabled:cursor-not-allowed"
+              className="flex items-center gap-2 bg-[#14161F] hover:bg-[#313858] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3] disabled:cursor-not-allowed"
               onClick={connectWallet}
               disabled={loading}
             >
               Connect Wallet
-              <img src="phantom.png" alt="Icon" className="w-5 h-5" />
+              <img src="solflare.png" alt="Icon" className="w-5 h-5" />
             </button>
           );
         } else {
           return (
             <div>
               <button
-                className="flex items-center gap-2 bg-[#9382DE] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3] disabled:cursor-not-allowed"
+                className="flex items-center gap-2 bg-[#14161F] text-white rounded-full py-2 px-4 font-medium disabled:bg-[#B0A9E3] disabled:cursor-not-allowed"
                 onClick={checkBalanceAndDeposit}
                 disabled={loading}
               >
                 Deposit {DEPOSIT_AMOUNT} SOL
-                <img src="phantom.png" alt="Icon" className="w-5 h-5" />
+                <img src="solflare.png" alt="Icon" className="w-5 h-5" />
               </button>
             </div>
           );

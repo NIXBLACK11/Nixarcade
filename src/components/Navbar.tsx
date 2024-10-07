@@ -15,7 +15,7 @@ export const Navbar = () => {
                             </span>
                         </div>
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            <a
+                            {/* <a
                                 href="#Home"
                                 className="border-transparent text-custom-dark hover:border-custom-gray hover:text-custom-dark inline-flex items-center px-1 pt-1 border-b-2 text-xl font-medium hover:text-green-300"
                             >
@@ -32,7 +32,7 @@ export const Navbar = () => {
                                 className="border-transparent text-custom-dark hover:border-custom-gray hover:text-custom-dark inline-flex items-center px-1 pt-1 border-b-2 text-xl font-medium hover:text-green-300"
                             >
                                 Contribute
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                     <div className="mt-4">
