@@ -1,7 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-
 export const Home = () => {
-    const navigate = useNavigate();
     return (
         <div className="h-screen relative pt-16 pb-12 bg-custom-dark" style={{ backgroundImage: "url('bg3.jpg')", backgroundSize: "100% 100%" }}>
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
