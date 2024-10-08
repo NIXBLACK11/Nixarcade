@@ -4,7 +4,7 @@ import { useOkto, WalletData } from "okto-sdk-react";
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
  
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useRecoilState } from 'recoil';
 import { transState } from '../atom';
 import { Wallet } from './Wallet';
@@ -16,7 +16,7 @@ interface OktoNavbarProps {
 
 const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const okto = useOkto();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [trans, setTrans] = useRecoilState(transState);
   const [isOpen, setOpen] = useState(false);
   const [connection, setConnection] = useState<Connection | null>(null);
