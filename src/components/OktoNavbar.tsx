@@ -63,7 +63,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const checkAuthentication = async () => {
     if (!authToken) {
       setError("No auth token found. Please log in again.");
-      navigate("/");
+      window.location.href="https://nixarcade.fun";
       return;
     }
 
@@ -74,14 +74,14 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
     } catch (err) {
       console.error("Authentication error:", err);
       setError("Authentication failed. Please log in again.");
-      navigate("/");
+      window.location.href="https://nixarcade.fun";
     }
   };
 
   const handleCreateWallet = async () => {
     if (!authToken) {
       setError("No auth token found. Please log in again.");
-      navigate("/");
+      window.location.href="https://nixarcade.fun";
       return;
     }
 

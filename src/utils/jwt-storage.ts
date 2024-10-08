@@ -25,7 +25,7 @@ const removeCookie = (name: string): void => {
 };
 
 export const saveJWT = (token: string): void => {
-  setCookie(JWT_KEY, token, 7); // Set the cookie for 7 days
+  setCookie(JWT_KEY, token, 1); // Set the cookie for 1 day
 };
 
 export const getJWT = (): string | null => {

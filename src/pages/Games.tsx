@@ -4,14 +4,16 @@ import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sd
 // import { WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
-import { saveJWT } from "../utils/jwt-storage";
+import { getJWT, saveJWT } from "../utils/jwt-storage";
 
 export const Games = () => {
     const [wallets, setWallets] = useState<WalletData>();
     const okto = useOkto();
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
+        console.log(token);
         saveJWT(token);
+        console.log(getJWT());
     }
 
     const makeTransaction = async () => {
@@ -19,7 +21,6 @@ export const Games = () => {
             console.error("Okto context is not available");
             return;
         }
-
         const recipientPublicKey = 'FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT';
         const transferData: TransferTokens = {
             network_name: 'SOLANA_DEVNET',
