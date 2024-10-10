@@ -148,7 +148,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
         </div>) : (
             <button
               onClick={handleCreateWallet}
-              className="bg-custom-primary hover:bg-[#703250] text-white font-bold py-2 px-4 rounded"
+              className="font-custom bg-custom-primary hover:bg-[#703250] text-white font-bold py-2 px-4 rounded"
             >
               Create Wallet
             </button>

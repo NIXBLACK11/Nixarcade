@@ -7,11 +7,8 @@ export const Navbar = () => {
                 <div className="flex justify-between h-16">
                     <div className="flex">
                         <div className="flex-shrink-0 flex items-center">
-                            <span className="text-2xl font-bold text-custom-primary mt-4">
-                                <img
-                                    src="textLogo.png"
-                                    width="100px"
-                                />
+                            <span className="font-custom text-4xl font-bold text-custom-primary mt-4">
+                                NIXARCADE
                             </span>
                         </div>
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

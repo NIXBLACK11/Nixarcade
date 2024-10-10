@@ -17,8 +17,8 @@ export const Wallet: React.FC<WalletProps> = ({address}) => {
         <div className="absolute m-0 p-0 w-screen h-screen bg-black bg-opacity-90 flex justify-center items-center z-10">
             {wallet === null ? (
                 <div className="bg-transparent p-6 rounded-lg shadow-lg max-w-md mx-auto border">
-                    <h2 className="text-xl font-bold mb-4 text-white">Connect wallet or use UPI</h2>
-                    <p className="text-white mb-4">Choose how you want to transfer the funds. There are several ways to do so.</p>
+                    <h2 className=" text-xl font-bold mb-4 text-white">Connect wallet or use UPI</h2>
+                    <p className=" text-white mb-4">Choose how you want to transfer the funds. There are several ways to do so.</p>
             
                     <div className="mb-4">
                     {walletOptions.slice(0, 3).map((wallet) => (
@@ -35,7 +35,7 @@ export const Wallet: React.FC<WalletProps> = ({address}) => {
                     ))}
                     </div>
             
-                    <p className="text-xs text-gray-500 mt-4">
+                    <p className=" text-xs text-gray-500 mt-4">
                     We do not own your private keys and cannot access your funds without your confirmation.
                     </p>
                 </div>
