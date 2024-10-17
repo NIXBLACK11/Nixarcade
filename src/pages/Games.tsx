@@ -60,10 +60,11 @@ export const Games = () => {
                         <div
                             onClick={async ()=>{
                                 const success = await makeTransaction();
-                                if(success) {
+                                console.log(success);
+                                // if(true) {
                                     saveToken();
                                     window.location.href="https://ludofam.nixarcade.fun";
-                                }
+                                // }
                             }}
                         >
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
