@@ -6,7 +6,8 @@ const setCookie = (name: string, value: string): void => {
   //   '.nixarcade.fun';
 
     // document.cookie = `${name}=${value}; domain=${domain}; path=/; Secure; SameSite=None`;
-    document.cookie = `${name}=${value}; domain=.nixarcade.fun; path=/; Secure; SameSite=None`;
+  document.cookie = `${name}=${value}, domain=.nixarcade.fun, path=/, Secure, SameSite=None`;
+  
 };
 
 const getCookie = (name: string): string | null => {
@@ -14,7 +15,8 @@ const getCookie = (name: string): string | null => {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) {
       const cookieValue = parts.pop()?.split(';').shift();
-      return cookieValue ? cookieValue : null;
+      const val = cookieValue?.split(",")[0];
+      return val ? val : null;
     }
     return null;
 };

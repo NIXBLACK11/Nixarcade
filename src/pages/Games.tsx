@@ -11,9 +11,9 @@ export const Games = () => {
     const okto = useOkto();
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
-        console.log(token);
+        console.log("hhhhh"+token);
         saveJWT(token);
-        console.log(getJWT());
+        console.log("saved"+getJWT());
     }
 
     const makeTransaction = async () => {
@@ -37,7 +37,6 @@ export const Games = () => {
             console.error("Error transferring SOL on devnet:", error);
             return false;
         }
-        // return true;
     }
 
     return (
@@ -61,10 +60,10 @@ export const Games = () => {
                             onClick={async ()=>{
                                 const success = await makeTransaction();
                                 console.log(success);
-                                // if(true) {
+                                if(true) {
                                     saveToken();
                                     window.location.href="https://ludofam.nixarcade.fun";
-                                // }
+                                }
                             }}
                         >
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
