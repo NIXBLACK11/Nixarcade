@@ -6,8 +6,10 @@ import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
 import { useRecoilState } from "recoil";
 import { balanceState, errorState } from "../atom";
+import { useNavigate } from "react-router-dom";
 
 export const Games = () => {
+    const navigate = useNavigate();
     const [wallets, setWallets] = useState<WalletData>();
     const [_, setError] = useRecoilState(errorState);
     const [balance] = useRecoilState(balanceState);
@@ -83,7 +85,9 @@ export const Games = () => {
                         </div>
                     </TiltWrapper>
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
-                        <a target="blank" href="/ComingSoon">
+                        <div onClick={()=>{
+                            navigate("/ComingSoon");
+                        }}>
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
                                 <div className="px-5 pb-5 text-center">
@@ -91,10 +95,12 @@ export const Games = () => {
                                     <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </TiltWrapper>
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
-                        <a target="blank" href="/ComingSoon">
+                        <div onClick={()=>{
+                            navigate("/ComingSoon");
+                        }}>
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="chess.png" alt="product image" />
                                 <div className="px-5 pb-5 text-center">
@@ -102,7 +108,7 @@ export const Games = () => {
                                     <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </TiltWrapper>
                 </div>
             </div>
