@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { OktoProvider, BuildType } from 'okto-sdk-react';
-// import Landing from './pages/Landing'
+import { Analytics } from "@vercel/analytics/react";
 import './App.css'
 import { ComingSoon } from './components/ComingSoon';
 import { Games } from './pages/Games';
@@ -14,6 +14,7 @@ function App() {
   const apiKey = import.meta.env.VITE_OKTO_CLIENT_API;
   return (
     <div className='h-screen w-screen '>
+      <Analytics/>
       <Router>
         <OktoProvider apiKey={apiKey} buildType={BuildType.SANDBOX}>
           <Routes>
