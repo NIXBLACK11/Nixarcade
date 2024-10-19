@@ -6,7 +6,7 @@ const setCookie = (name: string, value: string): void => {
   //   '.nixarcade.fun';
 
     // document.cookie = `${name}=${value}; domain=${domain}; path=/; Secure; SameSite=None`;
-  document.cookie = `${name}=${value}, domain=.nixarcade.fun, path=/, Secure, SameSite=None`;
+  document.cookie = `${name}=${value}, domain=.nixarcade.fun, Secure, SameSite=None`;
   
 };
 
@@ -22,7 +22,7 @@ const getCookie = (name: string): string | null => {
 };
   
 const removeCookie = (name: string): void => {
-  document.cookie = `${name}=; domain=.nixarcade.fun; path=/; Secure; SameSite=None`;
+  document.cookie = `${name}=; domain=.nixarcade.fun; Secure; SameSite=None`;
 };
 
 export const saveJWT = (token: string): void => {
