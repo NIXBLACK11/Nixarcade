@@ -1,9 +1,9 @@
 import { useRecoilState } from "recoil";
-import { WalletConnect } from "./WalletConnect"
-import { WalletConnect2 } from "./WalletConnect2";
 import { useState } from 'react';
 import { transState } from "../atom";
 import { FaArrowLeft } from "react-icons/fa";
+import { PhantomComponent } from "./PhantomComponent";
+import { SolflareComponent } from "./SolflareComponent";
 
 type WalletProps = {
     address: string;
@@ -51,9 +51,11 @@ export const WalletTransfer: React.FC<WalletProps> = ({address}) => {
                     </p>
                 </div>
             ) : wallet === "Solflare" ? (
-                <WalletConnect2 address={address}/>
+                // <WalletConnect2 address={address}/>
+                <SolflareComponent address={address}/>
             ) : wallet === "Phantom" ? (
-                <WalletConnect address={address}/>
+                // <WalletConnect address={address}/>
+                <PhantomComponent address={address}/>
             ) : null}
         </div>
     )
