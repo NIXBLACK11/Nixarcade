@@ -5,7 +5,7 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRecoilState } from 'recoil';
 type WalletProps = {
     address: string;
-  };
+};
 const NETWORK = 'https://api.devnet.solana.com';
 const DEPOSIT_AMOUNT = 0.5;
 
@@ -158,6 +158,7 @@ export const WalletConnect: React.FC<WalletProps> = ({address}) => {
                     Money deposited successfully
                     <button onClick={() => {
                         setTrans(false);
+                        setMoneyDeposited(false);
                     }}>
                         <IoMdCloseCircleOutline />
                     </button>

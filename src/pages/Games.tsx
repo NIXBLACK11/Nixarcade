@@ -1,7 +1,6 @@
 import { useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
-// import { WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
@@ -60,7 +59,6 @@ export const Games = () => {
                                 if(success) {
                                     saveToken();
                                     setTimeout(()=> {
-                                        // console.log(getJWT());
                                         window.location.href="https://ludofam.nixarcade.fun";
                                     }, 3000);
                                 }

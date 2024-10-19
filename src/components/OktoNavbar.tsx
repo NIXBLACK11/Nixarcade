@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { MdContentCopy } from "react-icons/md";
 import { useOkto, WalletData } from "okto-sdk-react";
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
  
@@ -17,7 +16,7 @@ interface OktoNavbarProps {
 const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const okto = useOkto();
   // const navigate = useNavigate();
-  const [trans, setTrans] = useRecoilState(transState);
+  const [trans] = useRecoilState(transState);
   const [isOpen, setOpen] = useState(false);
   const [connection, setConnection] = useState<Connection | null>(null);
   const [balance, setBalance] = useState<number | null>(null);
@@ -95,24 +94,28 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   };
 
   return (
-    <div className="">
-   {trans && <Wallet address={wallets?.wallets[0].address || ""}/>}
-    <nav className="bg-transparent shadow-md p-4 flex justify-between">
-        <div></div>
-        {wallets && wallets.wallets.length > 0 ? (<div className='ml-auto'>
-          <button
-            className='mr-5'
-            onClick={()=>{
-              setOpen(!isOpen);
-              fetchBalance();
-            }}
-          >
-            <img
-              src='okto.png'
-              className='h-16 rounded-full'
-            />
-          </button>
-          {isOpen && <div className="absolute right-5 mt-2 w-1/5 bg-transparent shadow-lg rounded-lg flex flex-col justify-center items-start border z-10">
+    <>
+   {isOpen && <Wallet setOpen={setOpen} wallets={wallets} balance={balance}/>}
+    <div className="w-screen bg-transparent p-4 flex items-center justify-center ">
+        {wallets && wallets.wallets.length > 0 ? (<div className='flex flex-row'>
+            <div className='mr-2 text-white items-center flex px-4 bg-[#1a2234] rounded-lg'>
+              <p className="font-semibold mx-6 text-white">{wallets.wallets[0].network_name}</p>
+              <p className='text-blue-600 font-semibold mx-6'>SOL: {balance}</p>
+            </div>
+            <button
+              className=''
+              onClick={()=>{
+                setOpen(!isOpen);
+                fetchBalance();
+              }}
+            >
+              <img
+                src='okto.png'
+                className='h-16 rounded-full'
+              />
+            </button>
+          
+          {/* {isOpen && <div className="absolute right-5 mt-8 w-1/5 bg-transparent shadow-lg rounded-lg flex flex-col justify-center items-start border z-10">
             <div className='m-0 p-0 flex flex-row'>
               <p className="font-semibold mx-6 text-white">{wallets.wallets[0].network_name}</p>
               <p className='text-blue-600 font-semibold mx-6'>SOL: {balance}</p>
@@ -144,7 +147,8 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
               Transfer funds to wallet
             </div>
           </div>
-          }
+          } */}
+          
         </div>) : (
             <button
               onClick={handleCreateWallet}
@@ -153,8 +157,8 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
               Create Wallet
             </button>
           )}
-    </nav>
     </div>
+    </>
   );
 };
 

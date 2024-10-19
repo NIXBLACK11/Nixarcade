@@ -165,6 +165,7 @@ export const WalletConnect2: React.FC<WalletProps> = ({address}) => {
                     Money deposited successfully
                     <button onClick={() => {
                         setTrans(false);
+                        setMoneyDeposited(false);
                     }}>
                         <IoMdCloseCircleOutline />
                     </button>
