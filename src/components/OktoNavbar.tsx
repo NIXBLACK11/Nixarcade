@@ -53,7 +53,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const fetchWallets = async () => {
     try {
       const walletsData = await okto?.createWallet();
-      console.log(walletsData)
+      // console.log(walletsData)
       setWallets(walletsData);
     } catch (error: any) {
       setError(`Failed to fetch wallets: ${error.message}`);
@@ -86,7 +86,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
     }
 
     try {
-        console.log(okto?.isLoggedIn);
+        // console.log(okto?.isLoggedIn);
         const walletsData = await okto?.createWallet();
         setWallets(walletsData);
       } catch (error: any) {

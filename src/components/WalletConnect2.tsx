@@ -59,7 +59,7 @@ export const WalletConnect2: React.FC<WalletProps> = ({address}) => {
         try {
             await wallet.disconnect(); // Disconnect first to ensure a fresh connection
             await wallet.connect();
-            console.log(wallet.publicKey);
+            // console.log(wallet.publicKey);
             setWalletAddress(wallet.publicKey?.toString() || "");
         } catch (error) {
             console.error("Error connecting to Solflare Wallet:", error);
@@ -86,8 +86,8 @@ export const WalletConnect2: React.FC<WalletProps> = ({address}) => {
 
             const requiredBalance = DEPOSIT_AMOUNT;
 
-            console.log(`Current balance: ${balance} SOL`);
-            console.log(`Required balance: ${DEPOSIT_AMOUNT} SOL`);
+            // console.log(`Current balance: ${balance} SOL`);
+            // console.log(`Required balance: ${DEPOSIT_AMOUNT} SOL`);
 
             if (balance && balance < requiredBalance) {
                 setError(`Insufficient balance. You have ${balance} SOL, but need at least ${DEPOSIT_AMOUNT} SOL to make this transaction.`);

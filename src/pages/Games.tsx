@@ -26,7 +26,7 @@ export const Games = () => {
             recipient_address: recipientPublicKey,
             quantity: '0.1',
         };
-        console.log(transferData);
+        // console.log(transferData);
         try {
             const result: TransferTokensData = await okto.transferTokens(transferData);
             console.log(`Transfer of 0.1 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
@@ -57,11 +57,10 @@ export const Games = () => {
                         <div
                             onClick={async ()=>{
                                 const success = await makeTransaction();
-                                console.log(success);
-                                if(true) {
+                                if(success) {
                                     saveToken();
                                     setTimeout(()=> {
-                                        console.log(getJWT());
+                                        // console.log(getJWT());
                                         window.location.href="https://ludofam.nixarcade.fun";
                                     }, 3000);
                                 }

@@ -12,13 +12,13 @@ export const Login: React.FC = () => {
   const handleGoogleLogin = async (credentialResponse: CredentialResponse) => {
     const idToken = credentialResponse.credential;
     if(!idToken) {
-      console.log("Id token not found");
+      // console.log("Id token not found");
       return;
     }
      okto?.authenticate(idToken, async (authResponse, error) => {
          if (authResponse) {
            localStorage.setItem('googleToken', authResponse.auth_token);
-           console.log("Authenticated successfully, auth token:", authResponse.auth_token);
+          //  console.log("Authenticated successfully, auth token:", authResponse.auth_token);
            navigate("/games");
          } else if (error) {
                console.error("Authentication error:", error);
