@@ -11,9 +11,7 @@ export const Games = () => {
     const okto = useOkto();
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
-        console.log("hhhhh"+token);
         saveJWT(token);
-        console.log("saved"+getJWT());
     }
 
     const makeTransaction = async () => {
@@ -62,7 +60,10 @@ export const Games = () => {
                                 console.log(success);
                                 if(true) {
                                     saveToken();
-                                    window.location.href="https://ludofam.nixarcade.fun";
+                                    setTimeout(()=> {
+                                        console.log(getJWT());
+                                        window.location.href="https://ludofam.nixarcade.fun";
+                                    }, 3000);
                                 }
                             }}
                         >
