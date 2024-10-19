@@ -4,7 +4,7 @@ import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sd
 // import { WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
-import { getJWT, saveJWT } from "../utils/jwt-storage";
+import { saveJWT } from "../utils/jwt-storage";
 
 export const Games = () => {
     const [wallets, setWallets] = useState<WalletData>();
