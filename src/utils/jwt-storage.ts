@@ -6,7 +6,7 @@ const setCookie = (name: string, value: string): void => {
   //   '.nixarcade.fun';
 
     // document.cookie = `${name}=${value}; domain=${domain}; path=/; Secure; SameSite=None`;
-  document.cookie = `${name}=${value}, domain=.nixarcade.fun, Secure, SameSite=None`;
+  document.cookie = `${name}=${value}; domain=.nixarcade.fun; Secure; SameSite=None`;
   
 };
 
