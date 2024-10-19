@@ -17,3 +17,16 @@ export const walletState = atom<WalletData>({
         wallets: [],
     },
 });
+
+export const balanceState = atom<number>({
+    key: 'balanceState',
+    default: 0,
+});
+
+export const errorState = atom({
+    key: 'errorState',
+    default: {
+      show: false,
+      message: ''
+    }
+});

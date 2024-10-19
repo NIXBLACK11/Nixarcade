@@ -3,9 +3,9 @@ import { useOkto, WalletData } from "okto-sdk-react";
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
  
 
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from 'recoil';
-import { transState } from '../atom';
+import { balanceState, transState } from '../atom';
 import { Wallet } from './Wallet';
 
 interface OktoNavbarProps {
@@ -15,11 +15,11 @@ interface OktoNavbarProps {
 
 const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const okto = useOkto();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [trans] = useRecoilState(transState);
   const [isOpen, setOpen] = useState(false);
   const [connection, setConnection] = useState<Connection | null>(null);
-  const [balance, setBalance] = useState<number | null>(null);
+  const [balance, setBalance] = useRecoilState(balanceState);
   const [_error, setError] = useState<string>("");
   const NETWORK = 'https://api.devnet.solana.com';
   const authToken = localStorage.getItem('googleToken');
@@ -62,7 +62,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const checkAuthentication = async () => {
     if (!authToken) {
       setError("No auth token found. Please log in again.");
-      window.location.href="https://nixarcade.fun";
+      navigate("../");
       return;
     }
 
@@ -73,14 +73,14 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
     } catch (err) {
       console.error("Authentication error:", err);
       setError("Authentication failed. Please log in again.");
-      window.location.href="https://nixarcade.fun";
+      navigate("../");
     }
   };
 
   const handleCreateWallet = async () => {
     if (!authToken) {
       setError("No auth token found. Please log in again.");
-      window.location.href="https://nixarcade.fun";
+      navigate("../");
       return;
     }
 
@@ -114,41 +114,6 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
                 className='h-16 rounded-full'
               />
             </button>
-          
-          {/* {isOpen && <div className="absolute right-5 mt-8 w-1/5 bg-transparent shadow-lg rounded-lg flex flex-col justify-center items-start border z-10">
-            <div className='m-0 p-0 flex flex-row'>
-              <p className="font-semibold mx-6 text-white">{wallets.wallets[0].network_name}</p>
-              <p className='text-blue-600 font-semibold mx-6'>SOL: {balance}</p>
-            </div>
-            <div
-              className="block px-4 py-2 text-gray-400 hover:bg-gray-500 w-full rounded-lg hover:text-black"
-            >
-              {wallets.wallets.map((wallet, index) => (
-              <div key={index} className="flex items-center justify-between">
-              <p className="text-sm">
-                {wallet.address.slice(0, 6)}...{wallet.address.slice(-4)}
-              </p>
-              <button
-                onClick={() => navigator.clipboard.writeText(wallet.address)}
-                className="ml-2 text-blue-500 text-sm flex items-center"
-              >
-                <MdContentCopy />
-              </button>
-            </div>
-            
-            ))}
-            </div>
-            <div
-              className="block px-4 py-2 text-gray-400 hover:bg-gray-500 w-full rounded-lg text-sm hover:text-black"
-              onClick={()=> {
-                setTrans(!trans);
-              }}
-            >
-              Transfer funds to wallet
-            </div>
-          </div>
-          } */}
-          
         </div>) : (
             <button
               onClick={handleCreateWallet}

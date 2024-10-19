@@ -6,6 +6,7 @@ import App from './App.tsx'
 import './index.css'
 import './fonts.css'
 import { RecoilRoot } from 'recoil';
+import ErrorToast from './components/ErrorToast.tsx';
 
 globalThis.Buffer = Buffer;
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
     <GoogleOAuthProvider clientId={clientId}>
       <RecoilRoot>
         <App />
+        <ErrorToast />
       </RecoilRoot>
     </GoogleOAuthProvider>
   </StrictMode>,

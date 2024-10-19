@@ -4,9 +4,13 @@ import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sd
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
+import { useRecoilState } from "recoil";
+import { balanceState, errorState } from "../atom";
 
 export const Games = () => {
     const [wallets, setWallets] = useState<WalletData>();
+    const [_, setError] = useRecoilState(errorState);
+    const [balance] = useRecoilState(balanceState);
     const okto = useOkto();
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
@@ -18,17 +22,18 @@ export const Games = () => {
             console.error("Okto context is not available");
             return;
         }
+
         const recipientPublicKey = 'FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT';
         const transferData: TransferTokens = {
             network_name: 'SOLANA_DEVNET',
             token_address: '',
             recipient_address: recipientPublicKey,
-            quantity: '0.1',
+            quantity: '0.01',
         };
         // console.log(transferData);
         try {
             const result: TransferTokensData = await okto.transferTokens(transferData);
-            console.log(`Transfer of 0.1 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
+            console.log(`Transfer of 0.01 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
             return true;
         } catch (error) {
             console.error("Error transferring SOL on devnet:", error);
@@ -55,6 +60,10 @@ export const Games = () => {
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
                         <div
                             onClick={async ()=>{
+                                if(balance<0.01) {
+                                    setError({ show: true, message: 'Not Enough balance' });
+                                    return;
+                                }
                                 const success = await makeTransaction();
                                 if(success) {
                                     saveToken();
@@ -66,8 +75,9 @@ export const Games = () => {
                         >
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
-                                <div className="px-5 pb-5">
-                                        <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                <div className="px-5 pb-5 text-center">
+                                    <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
+                                    <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                 </div>
                             </div>
                         </div>
@@ -76,8 +86,9 @@ export const Games = () => {
                         <a target="blank" href="/ComingSoon">
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
-                                <div className="px-5 pb-5">
-                                        <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Tic Tac Toe, play and win with your friends!!</h5>
+                                <div className="px-5 pb-5 text-center">
+                                    <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Tic-Tac-Toe, play and win with your friends!!</h5>
+                                    <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                 </div>
                             </div>
                         </a>
@@ -86,8 +97,9 @@ export const Games = () => {
                         <a target="blank" href="/ComingSoon">
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="chess.png" alt="product image" />
-                                <div className="px-5 pb-5">
-                                        <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Chess, play and win with your friends!!</h5>
+                                <div className="px-5 pb-5 text-center">
+                                    <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Chess, play and win with your friends!!</h5>
+                                    <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                 </div>
                             </div>
                         </a>
