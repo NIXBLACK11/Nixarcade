@@ -30,3 +30,8 @@ export const errorState = atom({
       message: ''
     }
 });
+
+export const loadingState = atom({
+    key: 'loadingState',
+    default: false,
+});

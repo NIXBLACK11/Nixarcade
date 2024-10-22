@@ -5,11 +5,13 @@ import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
 import { useRecoilState } from "recoil";
-import { balanceState, errorState } from "../atom";
+import { balanceState, errorState, loadingState } from "../atom";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../components/Loading";
 
 export const Games = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useRecoilState(loadingState);
     const [wallets, setWallets] = useState<WalletData>();
     const [_, setError] = useRecoilState(errorState);
     const [balance] = useRecoilState(balanceState);
@@ -45,6 +47,7 @@ export const Games = () => {
 
     return (
         <div className="h-screen w-screen">
+        {loading ? <Loading/> :
         <div className="pb-12 bg-custom-dark m-0 p-0 h-screen w-screen">
             <div>
                 <OktoNavbar wallets={wallets} setWallets={setWallets}/>
@@ -62,6 +65,7 @@ export const Games = () => {
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
                         <div
                             onClick={async ()=>{
+                                setLoading(true);
                                 if(balance<0.01) {
                                     setError({ show: true, message: 'Not Enough balance' });
                                     return;
@@ -72,6 +76,8 @@ export const Games = () => {
                                     setTimeout(()=> {
                                         window.location.href="https://ludofam.nixarcade.fun";
                                     }, 3000);
+                                } else {
+                                    setLoading(false);
                                 }
                             }}
                         >
@@ -113,7 +119,7 @@ export const Games = () => {
                 </div>
             </div>
             </div>
-        </div>
+        </div>}
     </div>
     )
 };
