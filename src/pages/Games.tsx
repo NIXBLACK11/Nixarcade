@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
@@ -10,6 +10,10 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../components/Loading";
 
 export const Games = () => {
+    useEffect(()=>{
+        setLoading(false);   
+    })
+
     const navigate = useNavigate();
     const [loading, setLoading] = useRecoilState(loadingState);
     const [wallets, setWallets] = useState<WalletData>();
@@ -34,7 +38,7 @@ export const Games = () => {
             recipient_address: recipientPublicKey,
             quantity: '0.01',
         };
-        // console.log(transferData);
+        console.log(transferData);
         try {
             const result: TransferTokensData = await okto.transferTokens(transferData);
             console.log(`Transfer of 0.01 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);

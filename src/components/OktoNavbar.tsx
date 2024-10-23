@@ -32,6 +32,7 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   useEffect(() => {
     checkAuthentication();
     fetchWallets();
+    fetchBalance();
   }, [trans]);
 
   const fetchBalance = async () => {
