@@ -1,6 +1,6 @@
 import { useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
-import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
+import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
