@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData, TransferTokens, TransferTokensData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
@@ -10,10 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../components/Loading";
 
 export const Games = () => {
-    useEffect(()=>{
-        setLoading(false);   
-    })
-
     const navigate = useNavigate();
     const [loading, setLoading] = useRecoilState(loadingState);
     const [wallets, setWallets] = useState<WalletData>();
@@ -72,6 +68,7 @@ export const Games = () => {
                                 setLoading(true);
                                 if(balance<0.01) {
                                     setError({ show: true, message: 'Not Enough balance' });
+                                    setLoading(false);
                                     return;
                                 }
                                 const success = await makeTransaction();

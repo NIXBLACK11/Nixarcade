@@ -32,7 +32,6 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   useEffect(() => {
     checkAuthentication();
     fetchWallets();
-    fetchBalance();
   }, [trans]);
 
   const fetchBalance = async () => {
@@ -53,8 +52,8 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
   const fetchWallets = async () => {
     try {
       const walletsData = await okto?.createWallet();
-      // console.log(walletsData)
       setWallets(walletsData);
+      fetchBalance();
     } catch (error: any) {
       setError(`Failed to fetch wallets: ${error.message}`);
     }
@@ -70,7 +69,6 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
     try {
       const userDetails = await okto?.getUserDetails();
       console.log("User authenticated:", userDetails);
-      fetchBalance();
     } catch (err) {
       console.error("Authentication error:", err);
       setError("Authentication failed. Please log in again.");

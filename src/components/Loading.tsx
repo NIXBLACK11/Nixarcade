@@ -3,7 +3,7 @@ export const Loading = () => {
         <div className="w-screen h-screen bg-black flex justify-center items-center">
             <img
                 src="loading.gif"
-                width={300}
+                width={900}
             />
         </div>
     )
