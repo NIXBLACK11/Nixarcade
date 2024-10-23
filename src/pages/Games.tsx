@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 import { balanceState, errorState, loadingState } from "../atom";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../components/Loading";
+import { makeTransaction } from "../utils/makeTransaction";
 
 export const Games = () => {
     const navigate = useNavigate();
@@ -19,30 +20,6 @@ export const Games = () => {
     const saveToken = async () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
         saveJWT(token);
-    }
-
-    const makeTransaction = async () => {
-        if (!okto) {
-            console.error("Okto context is not available");
-            return;
-        }
-
-        const recipientPublicKey = 'FhNZ5dafuzZLQXixkvRd2FP4XsDvmPyzaHnQwEtA1mPT';
-        const transferData: TransferTokens = {
-            network_name: 'SOLANA_DEVNET',
-            token_address: '',
-            recipient_address: recipientPublicKey,
-            quantity: '0.01',
-        };
-        console.log(transferData);
-        try {
-            const result: TransferTokensData = await okto.transferTokens(transferData);
-            console.log(`Transfer of 0.01 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
-            return true;
-        } catch (error) {
-            console.error("Error transferring SOL on devnet:", error);
-            return false;
-        }
     }
 
     return (
@@ -71,7 +48,7 @@ export const Games = () => {
                                     setLoading(false);
                                     return;
                                 }
-                                const success = await makeTransaction();
+                                const success = await makeTransaction(okto, '0.001');
                                 if(success) {
                                     saveToken();
                                     setTimeout(()=> {
@@ -92,9 +69,25 @@ export const Games = () => {
                         </div>
                     </TiltWrapper>
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
-                        <div onClick={()=>{
-                            navigate("/ComingSoon");
-                        }}>
+                        <div 
+                            onClick={async ()=>{
+                                setLoading(true);
+                                if(balance<0.01) {
+                                    setError({ show: true, message: 'Not Enough balance' });
+                                    setLoading(false);
+                                    return;
+                                }
+                                const success = await makeTransaction(okto, '0.001');
+                                if(success) {
+                                    saveToken();
+                                    setTimeout(()=> {
+                                        window.location.href="https://ttt.nixarcade.fun";
+                                    }, 3000);
+                                } else {
+                                    setLoading(false);
+                                }
+                            }}
+                        >
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
                                     <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
                                 <div className="px-5 pb-5 text-center">
