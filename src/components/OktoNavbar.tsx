@@ -29,35 +29,39 @@ const OktoNavbar: React.FC<OktoNavbarProps> = ({ wallets, setWallets }) => {
     setConnection(conn);
 }, []);
 
-  useEffect(() => {
-    checkAuthentication();
+useEffect(() => {
+  checkAuthentication();
+  if (wallets && wallets.wallets.length > 0) {
+    fetchBalance(); // Fetch balance only when wallets are available
+  } else {
     fetchWallets();
-  }, [trans]);
-
-  const fetchBalance = async () => {
-    const walletAddress = wallets?.wallets[0].address;
-    if (!connection || !walletAddress) return;
-
-    try {
-        const publicKey = new PublicKey(walletAddress);
-        const balanceInLamports = await connection.getBalance(publicKey);
-        const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
-        setBalance(balanceInSOL);
-    } catch (error) {
-        console.error("Error fetching balance:", error);
-        setError("Failed to fetch balance. Please try again.");
-    }
   }
+}, [trans, wallets]);
 
-  const fetchWallets = async () => {
-    try {
-      const walletsData = await okto?.createWallet();
-      setWallets(walletsData);
-      fetchBalance();
-    } catch (error: any) {
-      setError(`Failed to fetch wallets: ${error.message}`);
-    }
-  };
+const fetchBalance = async () => {
+  const walletAddress = wallets?.wallets[0]?.address; // Ensure wallets and address are defined
+  if (!connection || !walletAddress) return;
+
+  try {
+    const publicKey = new PublicKey(walletAddress);
+    const balanceInLamports = await connection.getBalance(publicKey);
+    const balanceInSOL = balanceInLamports / LAMPORTS_PER_SOL;
+    setBalance(balanceInSOL);
+  } catch (error) {
+    console.error("Error fetching balance:", error);
+    setError("Failed to fetch balance. Please try again.");
+  }
+};
+
+const fetchWallets = async () => {
+  try {
+    const walletsData = await okto?.createWallet();
+    setWallets(walletsData);
+  } catch (error: any) {
+    setError(`Failed to fetch wallets: ${error.message}`);
+  }
+};
+
 
   const checkAuthentication = async () => {
     if (!authToken) {
