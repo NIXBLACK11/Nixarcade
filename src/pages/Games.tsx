@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
@@ -22,6 +22,10 @@ export const Games = () => {
         const token = await generateToken(wallets?.wallets[0].address||"", true, "apisecret") || "";
         saveJWT(token);
     }
+
+    useEffect(()=>{
+        setLoading(false);
+    }, []);
 
     return (
         <div className="h-screen w-screen">
