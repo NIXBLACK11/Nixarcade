@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
@@ -11,6 +11,7 @@ import { Loading } from "../components/Loading";
 import { makeTransaction } from "../utils/makeTransaction";
 
 export const Games = () => {
+    const clickRef = useRef(new Audio("click.wav"));
     const navigate = useNavigate();
     const [loading, setLoading] = useRecoilState(loadingState);
     const [wallets, setWallets] = useState<WalletData>();
@@ -42,6 +43,7 @@ export const Games = () => {
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
                         <div
                             onClick={async ()=>{
+                                clickRef.current.play();
                                 setLoading(true);
                                 if(balance<0.01) {
                                     setError({ show: true, message: 'Not Enough balance' });
@@ -71,6 +73,7 @@ export const Games = () => {
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
                         <div 
                             onClick={async ()=>{
+                                clickRef.current.play();
                                 setLoading(true);
                                 if(balance<0.01) {
                                     setError({ show: true, message: 'Not Enough balance' });
@@ -99,6 +102,7 @@ export const Games = () => {
                     </TiltWrapper>
                     <TiltWrapper options={{ max: 15, speed: 200 }}>
                         <div onClick={()=>{
+                            clickRef.current.play();
                             navigate("/ComingSoon");
                         }}>
                             <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
