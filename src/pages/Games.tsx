@@ -61,8 +61,9 @@ export const Games = () => {
                                     setLoading(false);
                                 }
                             }}
+                            style={{ backgroundImage: "url('card1.jpeg')", backgroundSize: "cover"}}
                         >
-                            <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow">
                                     <img className="p-8 rounded-t-lg" src="Ludo.png" alt="product image" />
                                 <div className="px-5 pb-5 text-center">
                                     <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
@@ -92,8 +93,9 @@ export const Games = () => {
                                     setLoading(false);
                                 }
                             }}
+                            style={{ backgroundImage: "url('card2.jpeg')", backgroundSize: "cover"}}
                         >
-                            <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                            <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow">
                                     <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="product image" />
                                 <div className="px-5 pb-5 text-center">
                                     <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Tic-Tac-Toe, play and win with your friends!!</h5>
@@ -106,8 +108,8 @@ export const Games = () => {
                         <div onClick={()=>{
                             clickRef.current.play();
                             navigate("/ComingSoon");
-                        }}>
-                            <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow bg-custom-dark">
+                        }} style={{ backgroundImage: "url('card3.jpeg')", backgroundSize: "cover"}}>
+                            <div className="w-full max-w-sm border border-gray-200 rounded-lg shadow">
                                     <img className="p-8 rounded-t-lg" src="chess.png" alt="product image" />
                                 <div className="px-5 pb-5 text-center">
                                     <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Chess, play and win with your friends!!</h5>
