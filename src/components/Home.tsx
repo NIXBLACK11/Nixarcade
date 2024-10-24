@@ -2,7 +2,8 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export const Home = () => {
     return (
-        <div className="h-screen w-screen pt-16 pb-12 bg-custom-dark flex flex-wrap" style={{ backgroundImage: "url('bg3.jpg')", backgroundSize: "100% 100%" }}>
+        <div className="h-screen w-screen pt-16 pb-12 bg-custom-dark flex flex-wrap" style={{ backgroundImage: "url('bg3.jpg')", backgroundSize: "auto", backgroundRepeat: "repeat-y" }}>
+
             <div className="lg:w-1/2 md:w-1/2 w-full flex justify-center items-center flex-col text-center">
                 <h2 className="font-custom text-custom-primary text-4xl m-4">Welcome To</h2>
                 <h2 className="font-custom text-custom-primary text-8xl m-4">NIXARCADE</h2>

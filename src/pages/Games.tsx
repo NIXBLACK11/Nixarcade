@@ -85,6 +85,7 @@ export const Games = () => {
                                 if(success) {
                                     saveToken();
                                     setTimeout(()=> {
+                                        setLoading(false);
                                         window.location.href="https://ttt.nixarcade.fun";
                                     }, 3000);
                                 } else {
