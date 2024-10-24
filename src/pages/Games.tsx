@@ -23,9 +23,17 @@ export const Games = () => {
         saveJWT(token);
     }
 
-    useEffect(()=>{
-        setLoading(false);
-    }, []);
+    useEffect(() => {
+        const handlePopState = () => {
+          setLoading(false); // Reset loading when the user navigates back.
+        };
+      
+        window.addEventListener('popstate', handlePopState);
+      
+        return () => {
+          window.removeEventListener('popstate', handlePopState); // Clean up event listener.
+        };
+      }, []);
 
     return (
         <div className="h-screen w-screen">
