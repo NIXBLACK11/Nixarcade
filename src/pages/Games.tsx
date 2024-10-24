@@ -23,18 +23,6 @@ export const Games = () => {
         saveJWT(token);
     }
 
-    useEffect(() => {
-        const handlePopState = () => {
-          setLoading(false); // Reset loading when the user navigates back.
-        };
-      
-        window.addEventListener('popstate', handlePopState);
-      
-        return () => {
-          window.removeEventListener('popstate', handlePopState); // Clean up event listener.
-        };
-      }, []);
-
     return (
         <div className="h-screen w-screen">
         {loading ? <Loading/> :
@@ -66,6 +54,7 @@ export const Games = () => {
                                 if(success) {
                                     saveToken();
                                     setTimeout(()=> {
+                                        setLoading(false);
                                         window.location.href="https://ludofam.nixarcade.fun";
                                     }, 3000);
                                 } else {
