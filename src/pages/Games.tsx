@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
