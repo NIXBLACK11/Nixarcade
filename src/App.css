@@ -30,3 +30,20 @@
 body {
   overflow-x: hidden;
 }
+
+@keyframes hoverAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Moves the image 10px upwards */
+  }
+  100% {
+    transform: translateY(0); /* Brings the image back to original position */
+  }
+}
+
+.img-hover {
+  display: inline-block;
+  animation: hoverAnimation 2s ease-in-out infinite; /* 2-second animation, looping infinitely */
+}
