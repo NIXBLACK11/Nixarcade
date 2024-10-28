@@ -17,7 +17,7 @@ export const makeTransaction = async (okto: OktoContextType | null, amount: stri
     console.log(transferData);
     try {
         const result: TransferTokensData = await okto.transferTokens(transferData);
-        console.log(`Transfer of 0.01 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
+        console.log(`Transfer of 0.001 SOL on Solana devnet initiated. Order ID: ${result.orderId}`);
         return true;
     } catch (error) {
         console.error("Error transferring SOL on devnet:", error);
