@@ -32,7 +32,7 @@ function App() {
           className="text-white text-3xl p-2 focus:outline-none rounded-full border hover:bg-black"
           onClick={() => setSound(!sound)}
         >
-          {sound ? (<HiMiniSpeakerXMark className="text-4xl" />) : (<HiMiniSpeakerWave className="text-4xl" />)}
+          {sound ? (<HiMiniSpeakerWave className="text-4xl" />) : (<HiMiniSpeakerXMark className="text-4xl" />)}
         </button>
       </div>
       <Router>

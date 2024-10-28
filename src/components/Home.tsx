@@ -19,7 +19,7 @@ export const Home = () => {
                 <img
                     src="mainlogo.png"
                     className="img-hover"
-                    width={600}
+                    width={500}
                     alt="Logo"
                 />
             </div>
