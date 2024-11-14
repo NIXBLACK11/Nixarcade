@@ -18,7 +18,6 @@ export const Login: React.FC = () => {
      okto?.authenticate(idToken, async (authResponse, error) => {
          if (authResponse) {
            localStorage.setItem('googleToken', authResponse.auth_token);
-          //  console.log("Authenticated successfully, auth token:", authResponse.auth_token);
            navigate("/games");
          } else if (error) {
                console.error("Authentication error:", error);

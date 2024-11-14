@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useOkto, WalletData } from "okto-sdk-react";
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
- 
 
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from 'recoil';
 import { balanceState, transState } from '../atom';
 import { Wallet } from './Wallet';
+import { createUser, userExists } from '../utils/userMethods';
 
 interface OktoNavbarProps {
   wallets: WalletData | undefined; // WalletData can be undefined initially
@@ -57,6 +57,16 @@ const fetchWallets = async () => {
   try {
     const walletsData = await okto?.createWallet();
     setWallets(walletsData);
+
+    const userDetails = await okto?.getUserDetails();
+
+    const exists = await userExists(userDetails?.user_id);
+    if(exists==false) {
+      const success = await createUser(userDetails?.user_id, userDetails?.email, walletsData?.wallets[0].address);
+      if(!success) {
+        throw new Error("Failed to create user");
+      }
+    }
   } catch (error: any) {
     setError(`Failed to fetch wallets: ${error.message}`);
   }
@@ -91,6 +101,11 @@ const fetchWallets = async () => {
         // console.log(okto?.isLoggedIn);
         const walletsData = await okto?.createWallet();
         setWallets(walletsData);
+        const userDetails = await okto?.getUserDetails();
+        const success = await createUser(userDetails?.user_id, userDetails?.email, walletsData?.wallets[0].address);
+        if(!success) {
+          throw new Error("Failed to create user");
+        }
       } catch (error: any) {
         setError(`Failed to fetch wallets: ${error.message}`);
       }
@@ -101,7 +116,7 @@ const fetchWallets = async () => {
    {isOpen && <Wallet setOpen={setOpen} wallets={wallets} balance={balance}/>}
     <div className="w-screen bg-transparent p-4 flex items-center justify-center ">
         {wallets && wallets.wallets.length > 0 ? (<div className='flex flex-row'>
-            <div className='mr-2 text-white items-center flex px-4 bg-[#1a2234] rounded-lg'>
+            <div className='mr-2 text-white items-center hidden lg:flex px-4 bg-[#1a2234] rounded-lg '>
               <p className="font-semibold mx-6 text-white">{wallets.wallets[0].network_name}</p>
               <p className='text-blue-600 font-semibold mx-6'>SOL: {balance}</p>
             </div>
