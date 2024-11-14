@@ -18,7 +18,7 @@
 }
 
 .hover-tilt:hover {
-  transform: rotate3d(1, -1, 0, 20deg); /* Rotates along X and Y axes */
+  transform: rotate3d(1, -1, 0, 20deg);
 }
 
 * {
@@ -36,14 +36,28 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px); /* Moves the image 10px upwards */
+    transform: translateY(-10px);
   }
   100% {
-    transform: translateY(0); /* Brings the image back to original position */
+    transform: translateY(0);
   }
 }
 
 .img-hover {
   display: inline-block;
-  animation: hoverAnimation 2s ease-in-out infinite; /* 2-second animation, looping infinitely */
+  animation: hoverAnimation 2s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 10px;
+  height: 75vh;
 }
