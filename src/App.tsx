@@ -9,9 +9,6 @@ import { LeaderBoard } from './pages/LeaderBoard';
 
 
 function App() {
-  // console.log(process.env);
-
-  // const REACT_APP_OKTO_CLIENT_API = process.env.REACT_APP_OKTO_CLIENT_API || "";
   const apiKey = import.meta.env.VITE_OKTO_CLIENT_API;
   return (
     <div className='h-screen w-screen'>
