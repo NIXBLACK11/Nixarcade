@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
-import { WalletData } from "okto-sdk-react";
+import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
@@ -8,8 +8,8 @@ import { useRecoilState } from "recoil";
 import { balanceState, errorState, loadingState } from "../atom";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../components/Loading";
-// import { initiateTransfer } from "../utils/oktoFuncs";
-import ConfirmationModal from "../components/ConfirmationModal"; // Import modal
+import { initiateTransfer } from "../utils/oktoFuncs";
+import ConfirmationModal from "../components/ConfirmationModal";
 import { MdLeaderboard } from "react-icons/md";
 import { HiMiniSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
 
@@ -25,7 +25,7 @@ export const Games = () => {
     const musicRef = useRef<HTMLAudioElement>(new Audio('back.mp3'));
     const [sound, setSound] = useState<boolean>(false);
 
-    // const okto = useOkto();
+    const okto = useOkto();
 
     useEffect(() => {
       if (sound) {
@@ -40,7 +40,7 @@ export const Games = () => {
         saveJWT(token);
     }
 
-    const gameClick = async (gameLink: string, _amount: string) => {
+    const gameClick = async (gameLink: string, amount: string) => {
         clickRef.current.play();
         setLoading(true);
         if (balance < 0.001) {
@@ -48,13 +48,13 @@ export const Games = () => {
             setLoading(false);
             return;
         }
-        // const success = await initiateTransfer(okto, amount);
-        const success = true;
+        const success = await initiateTransfer(okto, amount);
+        // const success = true;
         if (success) {
             saveToken();
             setTimeout(() => {
                 setLoading(false);
-                window.location.href = gameLink;
+                // window.location.href = gameLink;
             }, 3000);
         } else {
             setLoading(false);

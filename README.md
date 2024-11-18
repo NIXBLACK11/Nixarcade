@@ -13,6 +13,8 @@ Welcome to **NixArcade**, the ultimate online platform where you can play your f
 
 1. [Tic-Tac-Toe](https://github.com/NIXBLACK11/tic-tac-toe)  
 2. [Ludo](https://github.com/NIXBLACK11/Ludo)
+3. [QWERTY](https://github.com/NIXBLACK11/qwerty)
+4. [Roulette]()
 
 ## How to Play
 
