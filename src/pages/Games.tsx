@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
-import { WalletData } from "okto-sdk-react";
+import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
 import { generateToken } from "../utils/generateToken";
 import { saveJWT } from "../utils/jwt-storage";
@@ -24,8 +24,16 @@ export const Games = () => {
     const [selectedGame, setSelectedGame] = useState<{ link: string, amount: string } | null>(null);
     const musicRef = useRef<HTMLAudioElement>(new Audio('back.mp3'));
     const [sound, setSound] = useState<boolean>(false);
+    const [publicKey, setPublicKey] = useState<string>();
 
-    // const okto = useOkto();
+    const okto = useOkto();
+    useEffect(() => {
+        const fetchKey = async () => {
+            const walletsData = await okto?.createWallet();
+            setPublicKey(walletsData?.wallets[0].address); 
+        }
+        fetchKey();
+    })
 
     useEffect(() => {
       if (sound) {
@@ -54,7 +62,7 @@ export const Games = () => {
             saveToken();
             setTimeout(() => {
                 setLoading(false);
-                window.location.href = gameLink;
+                navigate(gameLink);
             }, 3000);
         } else {
             setLoading(false);
@@ -141,7 +149,7 @@ export const Games = () => {
                                             width: "100%", // Optional: set width if needed
                                             height: "100%", // Optional: set height if needed
                                         }}
-                                        onClick={() => handleGameClick("https://ttt.nixarcade.fun", "0.001")}
+                                        onClick={() => handleGameClick(`ttt/${publicKey}`, "0.001")}
                                     >
                                         <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="Tic Tac Toe" />
                                         <div className="px-5 pb-5 text-center">

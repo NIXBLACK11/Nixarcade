@@ -101,7 +101,6 @@ export const waitForTransactionCompletion = async (
 
 export const initiateTransfer = async (okto: OktoContextType | null, amount: string) => {
     const result = await makeTransaction(okto, amount);
-    
     if (result.success && result.orderId) {
         // const status = await getTransactionStatus(okto, result.orderId);
         // console.log("Transaction status:", status);
