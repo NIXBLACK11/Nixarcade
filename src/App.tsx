@@ -6,6 +6,7 @@ import { ComingSoon } from './components/ComingSoon';
 import { Games } from './pages/Games';
 import Landing from './pages/Landing';
 import { LeaderBoard } from './pages/LeaderBoard';
+import { Game } from './pages/Game';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/ComingSoon" element={ <ComingSoon/> } />
             <Route path="/games" element={ <Games/> } />
             <Route path="/leaderboard" element={ <LeaderBoard/> } />
+            <Route path="/games/:game/:publicKey" element={ <Game/> } />
           </Routes>
         </OktoProvider>
       </Router>
