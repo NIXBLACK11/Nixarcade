@@ -40,7 +40,7 @@ export const Games = () => {
         saveJWT(token);
     }
 
-    const gameClick = async (gameLink: string, amount: string) => {
+    const gameClick = async (gameLink: string, _amount: string) => {
         clickRef.current.play();
         setLoading(true);
         if (balance < 0.001) {
