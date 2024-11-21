@@ -128,7 +128,7 @@ export const Games = () => {
                                             width: "100%",
                                             height: "100%",
                                         }}
-                                        onClick={() => handleGameClick("https://ludofam.nixarcade.fun", "0.001")}
+                                        onClick={() => handleGameClick(`ludofam/${publicKey}`, "0.001")}
                                     >
                                         <img className="p-8 rounded-t-lg" src="Ludo.png" alt="Ludo Game" />
                                         <div className="px-5 pb-5 text-center">
