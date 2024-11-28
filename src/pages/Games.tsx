@@ -12,7 +12,7 @@ import { Loading } from "../components/Loading";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { MdLeaderboard } from "react-icons/md";
 import { HiMiniSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
-import { BackgroundBeams } from "../components/ui/background-beams";
+// import { BackgroundBeams } from "../components/ui/background-beams";
 
 export const Games = () => {
     const clickRef = useRef(new Audio("click.wav"));
