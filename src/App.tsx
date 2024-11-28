@@ -7,6 +7,7 @@ import { Games } from './pages/Games';
 import Landing from './pages/Landing';
 import { LeaderBoard } from './pages/LeaderBoard';
 import { Game } from './pages/Game';
+import { Blinks } from './pages/Blinks';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/games" element={ <Games/> } />
             <Route path="/leaderboard" element={ <LeaderBoard/> } />
             <Route path="/games/:game/:publicKey" element={ <Game/> } />
+            <Route path="/blinks" element={ <Blinks/> } />
           </Routes>
         </OktoProvider>
       </Router>
