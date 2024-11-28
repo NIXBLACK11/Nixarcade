@@ -25,6 +25,26 @@ export const Home = () => {
             title: "SNAKE & LADDER",
             description: "Climb the ladders, avoid the snakes, and win the race!",
         },
+        {
+            logo: "monopoly.png",
+            title: "MONOPOLY",
+            description: "Build your empire, collect rent, and dominate the board.",
+        },
+        {
+            logo: "chess.png",
+            title: "CHESS",
+            description: "Outthink and outplay in the ultimate strategy game.",
+        },
+        {
+            logo: "qwerty.png",
+            title: "QWERTY",
+            description: "A speed game that challenges your typing skills.",
+        },
+        {
+            logo: "roulette.png",
+            title: "ROULETTE",
+            description: "Spin the wheel and test your luck in this classic casino game.",
+        },
     ];
 
     useEffect(() => {
