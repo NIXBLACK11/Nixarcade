@@ -113,7 +113,7 @@ const fetchWallets = async () => {
 
   return (
     <>
-   {isOpen && <Wallet setOpen={setOpen} wallets={wallets} balance={balance}/>}
+   {isOpen && <Wallet setOpen={setOpen} wallets={wallets} balance={balance} />}
     <div className="w-screen bg-transparent p-4 flex items-center justify-center ">
         {wallets && wallets.wallets.length > 0 ? (<div className='flex flex-row'>
             <div className='mr-2 text-white items-center hidden lg:flex px-4 bg-[#1a2234] rounded-lg '>

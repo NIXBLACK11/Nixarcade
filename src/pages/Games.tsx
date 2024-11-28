@@ -84,14 +84,13 @@ export const Games = () => {
 
     return (
         <div className="h-screen w-screen">
-            <BackgroundBeams className="text-blue-500" />
             <div className="fixed top-2 right-2 rounded-full">
                 <button
                     className="text-white text-2xl p-2 focus:outline-none rounded-full border hover:text-gray-700 flex flex-row justify-center items-center"
                     onClick={()=>{
                         navigate("/leaderboard");
                     }}
-                >
+                    >
                     <p className="mr-2 hidden lg:flex">Leaderboard</p>
                     <MdLeaderboard className="text-4xl lg:text-2xl"/>
                 </button>
@@ -106,7 +105,7 @@ export const Games = () => {
             </div>
             {loading ? <Loading /> :
                 <div className="pb-12 bg-custom-dark m-0 p-0 min-h-screen w-screen ">
-                    <div>
+                    <div className="z-10">
                         <OktoNavbar wallets={wallets} setWallets={setWallets} />
                     </div>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -152,7 +151,7 @@ export const Games = () => {
                                             height: "100%", // Optional: set height if needed
                                         }}
                                         onClick={() => handleGameClick(`ttt/${publicKey}`, "0.001")}
-                                    >
+                                        >
                                         <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="Tic Tac Toe" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Tic-Tac-Toe, play and win with your friends!!</h5>
@@ -173,7 +172,7 @@ export const Games = () => {
                                             height: "100%", // Optional: set height if needed
                                         }}
                                         onClick={() => handleGameClick(`snl/${publicKey}`, "0.001")}
-                                    >
+                                        >
                                         <img className="p-8 rounded-t-lg" src="s&l.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Snake and Ladder, play and win with your friends!!</h5>
@@ -194,7 +193,7 @@ export const Games = () => {
                                             height: "100%", // Optional: set height if needed
                                         }}
                                         onClick={() => navigate("/comingsoon")}
-                                    >
+                                        >
                                         <img className="p-8 rounded-t-lg" src="chess.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Chess, play and win with your friends!!</h5>
@@ -215,7 +214,7 @@ export const Games = () => {
                                             height: "100%", // Optional: set height if needed
                                         }}
                                         onClick={() => navigate("/comingsoon")}
-                                    >
+                                        >
                                         <img className="p-8 rounded-t-lg" src="monopoly.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Monopoly, play and win with your friends!!</h5>
@@ -236,7 +235,7 @@ export const Games = () => {
                                             height: "100%", // Optional: set height if needed
                                         }}
                                         onClick={() => navigate("/comingsoon")}
-                                    >
+                                        >
                                         <img className="p-8 rounded-t-lg" src="s&l.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Snake and Ladder, play and win with your friends!!</h5>
@@ -255,7 +254,7 @@ export const Games = () => {
                 isOpen={isModalOpen}
                 onConfirm={confirmTransaction}
                 onCancel={() => setIsModalOpen(false)}
-            />
+                />
         </div>
     )
 };

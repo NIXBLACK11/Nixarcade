@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { OktoProvider, BuildType } from 'okto-sdk-react';
 import { Analytics } from "@vercel/analytics/react";
 import './App.css'
-import { ComingSoon } from './components/ComingSoon';
+import { ComingSoon } from './pages/ComingSoon';
 import { Games } from './pages/Games';
 import Landing from './pages/Landing';
 import { LeaderBoard } from './pages/LeaderBoard';
