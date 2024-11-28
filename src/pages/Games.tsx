@@ -12,7 +12,6 @@ import { Loading } from "../components/Loading";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { MdLeaderboard } from "react-icons/md";
 import { HiMiniSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
-// import { BackgroundBeams } from "../components/ui/background-beams";
 
 export const Games = () => {
     const clickRef = useRef(new Audio("click.wav"));
@@ -171,7 +170,8 @@ export const Games = () => {
                                             width: "100%", // Optional: set width if needed
                                             height: "100%", // Optional: set height if needed
                                         }}
-                                        onClick={() => handleGameClick(`snl/${publicKey}`, "0.001")}
+                                        // onClick={() => handleGameClick(`snl/${publicKey}`, "0.001")}
+                                        onClick={() => navigate("/comingsoon")}
                                         >
                                         <img className="p-8 rounded-t-lg" src="s&l.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
