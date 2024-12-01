@@ -69,6 +69,31 @@ export const Blinks = () => {
                                         <h5 className="font-custom text-4xl font-semibold tracking-tight text-white">Roulette</h5>                                        </div>
                                     </div>
                                 </TiltWrapper>
+
+                                <TiltWrapper options={{ max: 15, speed: 200 }} className="lg:m-0 md:m-0 m-8">
+                                    <div 
+                                        className="w-full border border-gray-200 rounded-lg shadow"
+                                        style={{
+                                            backgroundImage: "url('card4.jpeg')",
+                                            backgroundSize: "cover",
+                                            backgroundPosition: "center",
+                                            backgroundRepeat: "no-repeat",
+                                            width: "100%",
+                                            height: "100%",
+                                        }}
+                                        onClick={() => {
+                                            clickRef.current.play();
+                                            window.open(
+                                                "https://dial.to/?action=solana-action:https://scramble.nixblack.site/api/actions/create-roulette&cluster=devnet", 
+                                                "_blank"
+                                            );
+                                        }}
+                                    >
+                                        <img className="p-8 rounded-t-lg" src="scramble.png" alt="Ludo Game" />
+                                        <div className="px-5 pb-5 text-center">
+                                        <h5 className="font-custom text-4xl font-semibold tracking-tight text-white">Roulette</h5>                                        </div>
+                                    </div>
+                                </TiltWrapper>
                             </div>
                         </div>
                     </div>
