@@ -91,7 +91,7 @@ export const Blinks = () => {
                                     >
                                         <img className="p-8 rounded-t-lg" src="scramble.gif" alt="Ludo Game" />
                                         <div className="px-5 pb-5 text-center">
-                                        <h5 className="font-custom text-4xl font-semibold tracking-tight text-white">Roulette</h5>                                        </div>
+                                        <h5 className="font-custom text-4xl font-semibold tracking-tight text-white">Scramble</h5>                                        </div>
                                     </div>
                                 </TiltWrapper>
                             </div>
