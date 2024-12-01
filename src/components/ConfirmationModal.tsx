@@ -12,7 +12,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({ isOpen, onConfirm
             <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
                 <h1 className='font-custom text-black text-3xl'>Confirm transaction</h1>
                 <p className=" font-custom text-2xl text-custom-primary mb-4">
-                    This will deduct 0.001 SOL from your in-game wallet. Do you want to proceed?
+                    This will deduct 0.01 SOL from your in-game wallet. Do you want to proceed?
                 </p>
                 <div className="flex justify-around mt-4">
                     <button

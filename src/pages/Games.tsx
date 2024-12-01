@@ -52,7 +52,7 @@ export const Games = () => {
     const gameClick = async (gameLink: string, _amount: string) => {
         clickRef.current.play();
         setLoading(true);
-        if (balance < 0.001) {
+        if (balance < 0.01) {
             setError({ show: true, message: 'Not Enough balance' });
             setLoading(false);
             return;
@@ -130,12 +130,12 @@ export const Games = () => {
                                             width: "100%",
                                             height: "100%",
                                         }}
-                                        onClick={() => handleGameClick(`ludofam/${publicKey}`, "0.001")}
+                                        onClick={() => handleGameClick(`ludofam/${publicKey}`, "0.01")}
                                     >
                                         <img className="p-8 rounded-t-lg" src="Ludo.png" alt="Ludo Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Ludo Fam, play and win with your friends!!</h5>
-                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.001</h5>
+                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                         </div>
                                     </div>
                                 </TiltWrapper>
@@ -151,12 +151,12 @@ export const Games = () => {
                                             width: "100%", // Optional: set width if needed
                                             height: "100%", // Optional: set height if needed
                                         }}
-                                        onClick={() => handleGameClick(`ttt/${publicKey}`, "0.001")}
+                                        onClick={() => handleGameClick(`ttt/${publicKey}`, "0.01")}
                                         >
                                         <img className="p-8 rounded-t-lg" src="tictactoe.png" alt="Tic Tac Toe" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Tic-Tac-Toe, play and win with your friends!!</h5>
-                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.001</h5>
+                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                         </div>
                                     </div>
                                 </TiltWrapper>
@@ -172,12 +172,12 @@ export const Games = () => {
                                             width: "100%", // Optional: set width if needed
                                             height: "100%", // Optional: set height if needed
                                         }}
-                                        onClick={() => handleGameClick(`snl/${publicKey}`, "0.001")}
+                                        onClick={() => handleGameClick(`snl/${publicKey}`, "0.01")}
                                         >
                                         <img className="p-8 rounded-t-lg" src="s&l.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Snake and Ladder, play and win with your friends!!</h5>
-                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.001</h5>
+                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                         </div>
                                     </div>
                                 </TiltWrapper>
@@ -198,7 +198,7 @@ export const Games = () => {
                                         <img className="p-8 rounded-t-lg" src="chess.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Chess, play and win with your friends!!</h5>
-                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.001</h5>
+                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                         </div>
                                     </div>
                                 </TiltWrapper>
@@ -219,7 +219,7 @@ export const Games = () => {
                                         <img className="p-8 rounded-t-lg" src="monopoly.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Monopoly, play and win with your friends!!</h5>
-                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.001</h5>
+                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                         </div>
                                     </div>
                                 </TiltWrapper>
@@ -240,7 +240,7 @@ export const Games = () => {
                                         <img className="p-8 rounded-t-lg" src="s&l.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
                                             <h5 className="font-custom text-xl font-semibold tracking-tight text-custom-dark">Snake and Ladder, play and win with your friends!!</h5>
-                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.001</h5>
+                                            <h5 className="font-custom text-3xl font-semibold tracking-tight text-custom-dark">SOL: 0.01</h5>
                                         </div>
                                     </div>
                                 </TiltWrapper>
