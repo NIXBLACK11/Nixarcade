@@ -99,6 +99,16 @@ export const Home = () => {
                         }}
                     />
                 </div>
+                <div className="flex items-center justify-center">
+                    <div
+                        className="text-white hover:text-slate-700 text-3xl font-custom underline"
+                        onClick={() => {
+                            window.open("https://nixarcade.fun/blinks", "_blank");
+                        }}
+                    >
+                        Games on Blinks
+                    </div>
+                </div>
             </div>
             <div className="lg:w-1/2 md:w-1/2 w-full flex justify-center items-center flex-col">
                 <img
