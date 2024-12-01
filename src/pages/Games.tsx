@@ -172,7 +172,7 @@ export const Games = () => {
                                             width: "100%", // Optional: set width if needed
                                             height: "100%", // Optional: set height if needed
                                         }}
-                                        onClick={() => navigate("/comingsoon")}
+                                        onClick={() => handleGameClick(`snl/${publicKey}`, "0.001")}
                                         >
                                         <img className="p-8 rounded-t-lg" src="s&l.png" alt="Chess Game" />
                                         <div className="px-5 pb-5 text-center">
