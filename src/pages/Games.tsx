@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import OktoNavbar from "../components/OktoNavbar";
 import { useOkto, WalletData } from "okto-sdk-react";
 import TiltWrapper from "../components/TiltWrapper";
-import { generateToken } from "../utils/generateToken";
-import { saveJWT } from "../utils/jwt-storage";
+// import { generateToken } from "../utils/generateToken";
+// import { saveJWT } from "../utils/jwt-storage";
 import { useRecoilState } from "recoil";
 import { balanceState, errorState, loadingState } from "../atom";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ import { Loading } from "../components/Loading";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { MdLeaderboard } from "react-icons/md";
 import { HiMiniSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
+import { setValidGameTrue } from "../utils/userMethods";
 
 export const Games = () => {
     const clickRef = useRef(new Audio("click.wav"));
@@ -43,10 +44,10 @@ export const Games = () => {
       }
     }, [sound]);
     
-    const saveToken = async () => {
-        const token = await generateToken(wallets?.wallets[0].address || "", true, "apisecret") || "";
-        saveJWT(token);
-    }
+    // const saveToken = async () => {
+    //     const token = await generateToken(wallets?.wallets[0].address || "", true, "apisecret") || "";
+    //     saveJWT(token);
+    // }
 
     const gameClick = async (gameLink: string, _amount: string) => {
         clickRef.current.play();
@@ -59,7 +60,8 @@ export const Games = () => {
         // const success = await initiateTransfer(okto, amount);
         const success = true;
         if (success) {
-            saveToken();
+            // saveToken();
+            setValidGameTrue(publicKey || "");
             setTimeout(() => {
                 setLoading(false);
                 navigate(gameLink);

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { checkGameValid } from "../utils/userMethods";
 
 export const Game = () => {
     const navigate = useNavigate();
@@ -10,6 +11,12 @@ export const Game = () => {
         if(!game || !publicKey) {
             navigate("../");
             return;
+        } else {
+            const isValid = checkGameValid(publicKey);
+            if(!isValid) {
+                navigate("../");
+                return;
+            }
         }
     }, []);
 

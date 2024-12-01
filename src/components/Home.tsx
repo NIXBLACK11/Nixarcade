@@ -1,5 +1,6 @@
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { GrAndroid } from "react-icons/gr";
 
 export const Home = () => {
     const [logoIndex, setLogoIndex] = useState(0);
@@ -86,6 +87,12 @@ export const Home = () => {
                         }}
                     />
                     <FaTwitter
+                        className="m-8 text-[#6B7280] text-4xl hover:text-black"
+                        onClick={() => {
+                            window.open("https://x.com/NIXARCADE", "_blank");
+                        }}
+                    />
+                    <GrAndroid
                         className="m-8 text-[#6B7280] text-4xl hover:text-black"
                         onClick={() => {
                             window.open("https://x.com/NIXARCADE", "_blank");
