@@ -84,7 +84,7 @@ export const Blinks = () => {
                                         onClick={() => {
                                             clickRef.current.play();
                                             window.open(
-                                                "https://dial.to/?action=solana-action:https://scramble.nixblack.site/api/actions/create-roulette&cluster=devnet", 
+                                                "https://dial.to/?action=solana-action:https://scramble.nixblack.site/api/actions/create-game&cluster=devnet", 
                                                 "_blank"
                                             );
                                         }}
