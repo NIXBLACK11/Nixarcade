@@ -8,7 +8,7 @@ import { useRecoilState } from "recoil";
 import { balanceState, errorState, loadingState } from "../atom";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../components/Loading";
-import { initiateTransfer } from "../utils/oktoFuncs";
+// import { initiateTransfer } from "../utils/oktoFuncs";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { MdLeaderboard } from "react-icons/md";
 import { HiMiniSpeakerWave, HiMiniSpeakerXMark } from "react-icons/hi2";
@@ -49,7 +49,7 @@ export const Games = () => {
     //     saveJWT(token);
     // }
 
-    const gameClick = async (gameLink: string, amount: string) => {
+    const gameClick = async (gameLink: string, _amount: string) => {
         clickRef.current.play();
         setLoading(true);
         if (balance < 0.01) {
@@ -57,8 +57,8 @@ export const Games = () => {
             setLoading(false);
             return;
         }
-        const success = await initiateTransfer(okto, amount);
-        // const success = true;
+        // const success = await initiateTransfer(okto, amount);
+        const success = true;
         if (success) {
             // saveToken();
             // setValidGameTrue(publicKey || "");

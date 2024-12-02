@@ -95,7 +95,7 @@ export const Home = () => {
                     <GrAndroid
                         className="m-8 text-[#6B7280] text-4xl hover:text-black"
                         onClick={() => {
-                            window.open("https://x.com/NIXARCADE", "_blank");
+                            window.open("https://expo.dev/accounts/r0ckyr/projects/Nixarcade/builds/ad4e50b7-22d2-4855-995c-9f137ebb4810", "_blank");
                         }}
                     />
                 </div>
